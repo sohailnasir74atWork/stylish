@@ -1,0 +1,148 @@
+// Pre-built ready-to-copy stylish names organized by category
+// These are curated Unicode names users can browse and copy instantly
+
+export interface PreBuiltName {
+    name: string;
+    style: string; // short style label
+}
+
+export interface PreBuiltCategory {
+    slug: string;
+    names: PreBuiltName[];
+}
+
+export const preBuiltNames: Record<string, PreBuiltName[]> = {
+    gaming: [
+        { name: '꧁༒☬𝓓𝓪𝓻𝓴𝓚𝓷𝓲𝓰𝓱𝓽☬༒꧂', style: 'Dark Knight' },
+        { name: '꧁★彡[ᴅᴇᴀᴅ ꜱʜᴏᴛ]彡★꧂', style: 'Dead Shot' },
+        { name: '⚡𝕊𝕙𝕒𝕕𝕠𝕨 𝔸𝕤𝕤𝕒𝕤𝕤𝕚𝕟⚡', style: 'Shadow Assassin' },
+        { name: '☠️𝙏𝙤𝙭𝙞𝙘 𝙑𝙞𝙥𝙚𝙧☠️', style: 'Toxic Viper' },
+        { name: '꧁⁣༒𝑷𝒉𝒂𝒏𝒕𝒐𝒎 𝑹𝒆𝒂𝒑𝒆𝒓༒꧂', style: 'Phantom Reaper' },
+        { name: '★彡 ᴺᴵᴳᴴᵀ ᴴᴬᵂᴷ 彡★', style: 'Night Hawk' },
+        { name: '╰‿╯𝕃𝕖𝕘𝕖𝕟𝕕 𝕂𝕚𝕝𝕝𝕖𝕣╰‿╯', style: 'Legend Killer' },
+        { name: '꧁ঔৣ☬𝗕𝗹𝗮𝘇𝗲 𝗦𝘁𝗼𝗿𝗺☬ঔৣ꧂', style: 'Blaze Storm' },
+        { name: '乂❤‿❤乂 𝕊𝕟𝕚𝕡𝕖𝕣 𝕂𝕚𝕟𝕘', style: 'Sniper King' },
+        { name: '꧁☆☬ 𝓦𝓪𝓻 𝓜𝓪𝓬𝓱𝓲𝓷𝓮 ☬☆꧂', style: 'War Machine' },
+        { name: '☬ᴴᴱᴬᴰˢᴴᴼᵀ ᴳᴼᴰ☬', style: 'Headshot God' },
+        { name: '꧁༺₦ɨ₦ℑ₳꧂', style: 'Ninja' },
+        { name: '⫷ 𝕊𝕥𝕠𝕣𝕞 𝔹𝕣𝕖𝕒𝕜𝕖𝕣 ⫸', style: 'Storm Breaker' },
+        { name: '✰𝙱𝚞𝚕𝚕𝚎𝚝 𝙿𝚛𝚘𝚘𝚏✰', style: 'Bullet Proof' },
+        { name: '꧁★ 𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑 ★꧂', style: 'Dark Angel' },
+        { name: '╾━╤デ╦︻ 𝓢𝓷𝓲𝓹𝓮𝓻', style: 'Sniper' },
+        { name: '꧁ᴳᵒᵈ 𝗢𝗳 𝗪𝗮𝗿꧂', style: 'God Of War' },
+        { name: '☢️𝙍𝙖𝙙𝙞𝙤𝙖𝙘𝙩𝙞𝙫𝙚☢️', style: 'Radioactive' },
+        { name: '꧁༒☬𝔇𝔢𝔪𝔬𝔫☬༒꧂', style: 'Demon' },
+        { name: '⚔️𝕭𝖊𝖗𝖘𝖊𝖗𝖐𝖊𝖗⚔️', style: 'Berserker' },
+    ],
+
+    boy: [
+        { name: '꧁𝓚𝓲𝓷𝓰 𝓞𝓯 𝓢𝓽𝔂𝓵𝓮꧂', style: 'King Of Style' },
+        { name: '✦𝙱𝚊𝚍 𝙱𝚘𝚢 ✦', style: 'Bad Boy' },
+        { name: '꧁★𝕽𝖔𝖞𝖆𝖑 𝕶𝖎𝖓𝖌★꧂', style: 'Royal King' },
+        { name: '⚡𝙰𝚕𝚙𝚑𝚊 𝙼𝚊𝚕𝚎⚡', style: 'Alpha Male' },
+        { name: '♛𝒟𝒶𝓇𝓀 𝒫𝓇𝒾𝓃𝒸𝑒♛', style: 'Dark Prince' },
+        { name: '꧁ 𝕃𝕠𝕟𝕖 𝕎𝕠𝕝𝕗 ꧂', style: 'Lone Wolf' },
+        { name: '☬𝕳𝖊𝖆𝖗𝖙𝖑𝖊𝖘𝖘 𝕭𝖔𝖞☬', style: 'Heartless Boy' },
+        { name: '★彡𝕊𝕥𝕪𝕝𝕚𝕤𝕙 𝔹𝕠𝕪彡★', style: 'Stylish Boy' },
+        { name: '꧁ঔৣ☬𝓡𝓮𝓫𝓮𝓵☬ঔৣ꧂', style: 'Rebel' },
+        { name: '♔ꜱɪʟᴇɴᴛ ᴋɪʟʟᴇʀ♔', style: 'Silent Killer' },
+        { name: '꧁✿𝓐𝓽𝓽𝓲𝓽𝓾𝓭𝓮 𝓑𝓸𝔂✿꧂', style: 'Attitude Boy' },
+        { name: '⫷𝙷𝚞𝚗𝚝𝚎𝚛⫸', style: 'Hunter' },
+        { name: '꧁ᴮᴼˢˢ ᴮᴼʸ꧂', style: 'Boss Boy' },
+        { name: '✰𝐒𝐚𝐯𝐚𝐠𝐞 𝐊𝐢𝐧𝐠✰', style: 'Savage King' },
+        { name: '꧁♚𝕯𝖆𝖗𝖐 𝕷𝖔𝖗𝖉♚꧂', style: 'Dark Lord' },
+    ],
+
+    girl: [
+        { name: '꧁💖𝒫𝓇𝒾𝓃𝒸𝑒𝓈𝓈💖꧂', style: 'Princess' },
+        { name: '✿𝓠𝓾𝓮𝓮𝓷 𝓞𝓯 𝓗𝓮𝓪𝓻𝓽𝓼✿', style: 'Queen Of Hearts' },
+        { name: '🦋𝔹𝕦𝕥𝕥𝕖𝕣𝕗𝕝𝕪 𝔾𝕚𝕣𝕝🦋', style: 'Butterfly Girl' },
+        { name: '♡𝕊𝕨𝕖𝕖𝕥 𝔸𝕟𝕘𝕖𝕝♡', style: 'Sweet Angel' },
+        { name: '꧁🌸𝓒𝓾𝓽𝓮 𝓓𝓸𝓵𝓵🌸꧂', style: 'Cute Doll' },
+        { name: '✦𝙱𝚊𝚋𝚢 𝙶𝚒𝚛𝚕✦', style: 'Baby Girl' },
+        { name: '👑𝒬𝓊𝑒𝑒𝓃 𝐵𝑒𝑒👑', style: 'Queen Bee' },
+        { name: '꧁💫𝕊𝕥𝕒𝕣 𝔾𝕚𝕣𝕝💫꧂', style: 'Star Girl' },
+        { name: '🌹𝓡𝓸𝓼𝓮 𝓟𝓻𝓲𝓷𝓬𝓮𝓼𝓼🌹', style: 'Rose Princess' },
+        { name: '♡ᴅʀᴇᴀᴍ ɢɪʀʟ♡', style: 'Dream Girl' },
+        { name: '꧁☆𝙶𝚕𝚊𝚖 𝙶𝚒𝚛𝚕☆꧂', style: 'Glam Girl' },
+        { name: '✰𝓐𝓷𝓰𝓮𝓵 𝓔𝔂𝓮𝓼✰', style: 'Angel Eyes' },
+        { name: '🌺𝕃𝕠𝕧𝕖𝕝𝕪 𝔾𝕚𝕣𝕝🌺', style: 'Lovely Girl' },
+        { name: '꧁♡𝒫𝒾𝓃𝓀 𝒫𝓇𝒾𝓃𝒸𝑒𝓈𝓈♡꧂', style: 'Pink Princess' },
+        { name: '💎𝕯𝖎𝖆𝖒𝖔𝖓𝖉 𝕲𝖎𝖗𝖑💎', style: 'Diamond Girl' },
+    ],
+
+    beautiful: [
+        { name: '꧁✨𝓑𝓮𝓪𝓾𝓽𝓲𝓯𝓾𝓵 𝓢𝓸𝓾𝓵✨꧂', style: 'Beautiful Soul' },
+        { name: '🌟𝔹𝕖𝕒𝕦𝕥𝕚𝕗𝕦𝕝 𝔻𝕣𝕖𝕒𝕞🌟', style: 'Beautiful Dream' },
+        { name: '✿𝒢𝑜𝓁𝒹𝑒𝓃 𝐻𝑒𝒶𝓇𝓉✿', style: 'Golden Heart' },
+        { name: '꧁🌸𝕊𝕦𝕟𝕤𝕙𝕚𝕟𝕖🌸꧂', style: 'Sunshine' },
+        { name: '💫𝓢𝓹𝓪𝓻𝓴𝓵𝓮 𝓢𝓽𝓪𝓻💫', style: 'Sparkle Star' },
+        { name: '🌹𝙱𝚎𝚊𝚞𝚝𝚒𝚏𝚞𝚕 𝙼𝚒𝚗𝚍🌹', style: 'Beautiful Mind' },
+        { name: '✦𝕊𝕥𝕒𝕣𝕕𝕦𝕤𝕥✦', style: 'Stardust' },
+        { name: '꧁♡𝓟𝓾𝓻𝓮 𝓗𝓮𝓪𝓻𝓽♡꧂', style: 'Pure Heart' },
+        { name: '🦋𝔾𝕣𝕒𝕔𝕖𝕗𝕦𝕝🦋', style: 'Graceful' },
+        { name: '💖𝓑𝓮𝓪𝓾𝓽𝔂 𝓠𝓾𝓮𝓮𝓷💖', style: 'Beauty Queen' },
+        { name: '✰𝕄𝕠𝕠𝕟𝕝𝕚𝕘𝕙𝕥✰', style: 'Moonlight' },
+        { name: '꧁🌺𝙴𝚕𝚎𝚐𝚊𝚗𝚝 𝙱𝚎𝚊𝚞𝚝𝚢🌺꧂', style: 'Elegant Beauty' },
+    ],
+
+    couple: [
+        { name: '♡𝓚𝓲𝓷𝓰 & 𝓠𝓾𝓮𝓮𝓷♡', style: 'King & Queen' },
+        { name: '꧁💑𝕃𝕠𝕧𝕖 𝔹𝕚𝕣𝕕𝕤꧂', style: 'Love Birds' },
+        { name: '💕𝒮𝑜𝓊𝓁 𝑀𝒶𝓉𝑒𝓈💕', style: 'Soul Mates' },
+        { name: '♚𝙷𝚒𝚜 𝚀𝚞𝚎𝚎𝚗♛', style: 'His Queen' },
+        { name: '♛𝙷𝚎𝚛 𝙺𝚒𝚗𝚐♚', style: 'Her King' },
+        { name: '꧁❤️𝓕𝓸𝓻𝓮𝓿𝓮𝓻 𝓣𝓸𝓰𝓮𝓽𝓱𝓮𝓻❤️꧂', style: 'Forever Together' },
+        { name: '🌹𝕎𝕚𝕗𝕖𝕪🌹', style: 'Wifey' },
+        { name: '💍𝕳𝖚𝖇𝖇𝖞💍', style: 'Hubby' },
+        { name: '♡𝙱𝚊𝚋𝚢 & 𝙱𝚘𝚘♡', style: 'Baby & Boo' },
+        { name: '꧁💞𝓜𝔂 𝓛𝓸𝓿𝓮💞꧂', style: 'My Love' },
+        { name: '✦𝕊𝕨𝕖𝕖𝕥 ℂ𝕠𝕦𝕡𝕝𝕖✦', style: 'Sweet Couple' },
+        { name: '❤️‍🔥𝙱𝚘𝚗𝚗𝚒𝚎 & 𝙲𝚕𝚢𝚍𝚎❤️‍🔥', style: 'Bonnie & Clyde' },
+    ],
+
+    'group-name': [
+        { name: '꧁⚡𝕋𝕙𝕖 𝕃𝕖𝕘𝕖𝕟𝕕𝕤⚡꧂', style: 'The Legends' },
+        { name: '★彡𝓢𝓺𝓾𝓪𝓭 𝓖𝓸𝓪𝓵𝓼彡★', style: 'Squad Goals' },
+        { name: '꧁☬𝕯𝖆𝖗𝖐 𝕬𝖗𝖒𝖞☬꧂', style: 'Dark Army' },
+        { name: '⚔️𝙱𝚛𝚘𝚝𝚑𝚎𝚛𝚑𝚘𝚘𝚍⚔️', style: 'Brotherhood' },
+        { name: '👑𝓡𝓸𝔂𝓪𝓵 𝓕𝓪𝓶𝓲𝓵𝔂👑', style: 'Royal Family' },
+        { name: '꧁💫𝔹𝕖𝕤𝕥 𝔽𝕣𝕚𝕖𝕟𝕕𝕤💫꧂', style: 'Best Friends' },
+        { name: '🔥𝙵𝚒𝚛𝚎 𝚂𝚚𝚞𝚊𝚍🔥', style: 'Fire Squad' },
+        { name: '꧁♚𝕶𝖎𝖓𝖌𝖘 𝖔𝖋 𝕲𝖆𝖒𝖎𝖓𝖌♚꧂', style: 'Kings of Gaming' },
+        { name: '✰𝕊𝕥𝕒𝕣 𝕋𝕖𝕒𝕞✰', style: 'Star Team' },
+        { name: '꧁★𝓣𝓱𝓮 𝓐𝓿𝓮𝓷𝓰𝓮𝓻𝓼★꧂', style: 'The Avengers' },
+        { name: '⫷𝙴𝚕𝚒𝚝𝚎 𝙲𝚕𝚊𝚗⫸', style: 'Elite Clan' },
+        { name: '꧁🔱𝕿𝖍𝖊 𝕲𝖆𝖓𝖌🔱꧂', style: 'The Gang' },
+    ],
+
+    mafia: [
+        { name: '꧁☬𝕸𝖆𝖋𝖎𝖆 𝕭𝖔𝖘𝖘☬꧂', style: 'Mafia Boss' },
+        { name: '🔫𝓖𝓪𝓷𝓰𝓼𝓽𝓮𝓻🔫', style: 'Gangster' },
+        { name: '꧁⚔️𝕯𝖔𝖓 𝕮𝖔𝖗𝖑𝖊𝖔𝖓𝖊⚔️꧂', style: 'Don Corleone' },
+        { name: '☠️𝙳𝚊𝚛𝚔 𝙼𝚊𝚏𝚒𝚊☠️', style: 'Dark Mafia' },
+        { name: '꧁💀𝕿𝖍𝖊 𝕲𝖔𝖉𝖋𝖆𝖙𝖍𝖊𝖗💀꧂', style: 'The Godfather' },
+        { name: '🗡️𝕊𝕚𝕝𝕖𝕟𝕥 𝕄𝕒𝕗𝕚𝕒🗡️', style: 'Silent Mafia' },
+        { name: '꧁☬𝓓𝓸𝓷 𝓑𝓸𝓼𝓼☬꧂', style: 'Don Boss' },
+        { name: '⚡𝙼𝚊𝚏𝚒𝚊 𝙺𝚒𝚗𝚐⚡', style: 'Mafia King' },
+        { name: '꧁🔥𝕋𝕙𝕖 𝕄𝕠𝕓🔥꧂', style: 'The Mob' },
+        { name: '💣𝓣𝓱𝓮 𝓓𝓸𝓷💣', style: 'The Don' },
+        { name: '꧁♠️𝕯𝖊𝖆𝖙𝖍 𝕸𝖆𝖋𝖎𝖆♠️꧂', style: 'Death Mafia' },
+        { name: '🖤𝕸𝖆𝖋𝖎𝖆 𝕷𝖔𝖗𝖉🖤', style: 'Mafia Lord' },
+    ],
+
+    wifi: [
+        { name: '꧁📶𝓝𝓸 𝓕𝓻𝓮𝓮 𝓦𝓲𝓕𝓲꧂', style: 'No Free WiFi' },
+        { name: '🔒𝕋𝕣𝕪 𝔸𝕘𝕒𝕚𝕟 𝕃𝕒𝕥𝕖𝕣', style: 'Try Again Later' },
+        { name: '꧁💀𝙿𝚊𝚜𝚜𝚠𝚘𝚛𝚍 𝙸𝚜 𝟷𝟸𝟹𝟺💀꧂', style: 'Password 1234' },
+        { name: '⚡𝕱𝖆𝖘𝖙 𝖂𝖎𝕱𝖎⚡', style: 'Fast WiFi' },
+        { name: '꧁😂𝓝𝓸𝓽 𝓨𝓸𝓾𝓻 𝓦𝓲𝓕𝓲😂꧂', style: 'Not Your WiFi' },
+        { name: '🛜𝕃𝕠𝕒𝕕𝕚𝕟𝕘...', style: 'Loading...' },
+        { name: '꧁🔐𝙿𝚊𝚢 𝙵𝚘𝚛 𝚆𝚒𝙵𝚒🔐꧂', style: 'Pay For WiFi' },
+        { name: '☠️𝕍𝕚𝕣𝕦𝕤 𝕀𝕟𝕤𝕚𝕕𝕖☠️', style: 'Virus Inside' },
+        { name: '꧁🤷𝓖𝓾𝓮𝓼𝓼 𝓣𝓱𝓮 𝓟𝓪𝓼𝓼🤷꧂', style: 'Guess The Pass' },
+        { name: '📵𝙽𝚘 𝙸𝚗𝚝𝚎𝚛𝚗𝚎𝚝📵', style: 'No Internet' },
+        { name: '꧁✨𝕊𝕥𝕪𝕝𝕚𝕤𝕙 𝕎𝕚𝔽𝕚✨꧂', style: 'Stylish WiFi' },
+        { name: '🔥𝕳𝖔𝖙𝖘𝖕𝖔𝖙 𝕶𝖎𝖓𝖌🔥', style: 'Hotspot King' },
+    ],
+};
