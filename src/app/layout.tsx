@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,11 +11,6 @@ import { getLocaleDictionary } from "@/lib/getLocale";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
 });
 
 // Force dynamic rendering so locale is read from cookies/headers on every request
@@ -58,11 +53,20 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: t.siteName,
       type: 'website',
       locale: 'en_US',
+      images: [
+        {
+          url: `${SITE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: `${t.siteName} — ${t.heroTitle}`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${t.siteName} — ${t.heroTitle} ✨`,
       description: t.metaDescription,
+      images: [`${SITE_URL}/og-image.png`],
     },
     robots: {
       index: true,
@@ -88,7 +92,7 @@ export default async function RootLayout({
   const rtl = isRtl(locale);
 
   return (
-    <html lang={locale} dir={rtl ? 'rtl' : 'ltr'} className={`${inter.variable} ${outfit.variable}`}>
+    <html lang={locale} dir={rtl ? 'rtl' : 'ltr'} className={inter.variable}>
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" />
         {/* Hreflang tags for all locales */}

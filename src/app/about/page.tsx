@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { SITE_NAME } from '@/lib/constants';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: `About Us | ${SITE_NAME}`,
     description: `Learn about ${SITE_NAME} — the free stylish name generator for creating beautiful names with cool fonts, symbols, and decorations.`,

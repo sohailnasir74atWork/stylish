@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: `Terms of Service | ${SITE_NAME}`,
     description: `Terms of Service for ${SITE_NAME}. Read our terms and conditions for using our stylish name generator.`,

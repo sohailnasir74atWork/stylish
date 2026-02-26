@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
     title: `Privacy Policy | ${SITE_NAME}`,
     description: `Privacy Policy for ${SITE_NAME}. Learn how we handle your data and protect your privacy.`,
