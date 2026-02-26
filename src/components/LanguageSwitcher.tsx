@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { locales, localeNames, localeFlags, defaultLocale, Locale } from '@/lib/i18n';
 import { useLocale } from '@/hooks/useLocale';
 
@@ -11,7 +10,6 @@ export default function LanguageSwitcher() {
     const ref = useRef<HTMLDivElement>(null);
     const { locale: currentLocale } = useLocale();
     const pathname = usePathname();
-    const router = useRouter();
 
     // Close on outside click
     useEffect(() => {
@@ -68,7 +66,7 @@ export default function LanguageSwitcher() {
                                     } else {
                                         document.cookie = `locale=${locale}; path=/; max-age=${60 * 60 * 24 * 365}`;
                                     }
-                                    router.push(path);
+                                    window.location.href = path;
                                 }}
                                 className={`flex items-center gap-2 px-3 py-2 text-xs hover:bg-white/10 transition-colors w-full text-left ${currentLocale === locale ? 'bg-purple-500/10 text-purple-300' : 'text-gray-300'}`}
                             >
