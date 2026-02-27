@@ -148,34 +148,20 @@ export default async function RootLayout({
               mainEntity: [
                 {
                   "@type": "Question",
-                  name: "What is a stylish name generator?",
+                  name: locale === 'en' ? "What is a stylish name generator?" : `${dictionary.heroTitle}?`,
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "A stylish name generator turns your plain text into fancy, cool-looking names using Unicode fonts and symbols. You can copy and paste these names on Instagram, PUBG, Free Fire, TikTok, WhatsApp, and more.",
+                    text: dictionary.metaDescription,
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "How to make a stylish name for PUBG?",
+                  name: locale === 'en' ? "Is this stylish name generator free?" : `${dictionary.siteName} — free?`,
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Type your name in our generator, pick a style you like, and tap to copy. Then paste it as your PUBG username. We have 1000+ fonts that work on PUBG Mobile.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Is this stylish name generator free?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes, 100% free! No sign-up, no downloads, no limits. Just type your name and copy any style you like.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Do stylish names work on Instagram and TikTok?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes! Our stylish names use Unicode characters that work on Instagram bios, TikTok usernames, WhatsApp status, Facebook profiles, and all social media apps.",
+                    text: locale === 'en'
+                      ? "Yes, 100% free! No sign-up, no downloads, no limits. Just type your name and copy any style you like."
+                      : dictionary.siteDescription,
                   },
                 },
               ],

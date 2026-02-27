@@ -14,6 +14,7 @@ import PreBuiltNamesGrid from '@/components/PreBuiltNamesGrid';
 import ToolCards from '@/components/ToolCards';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
 
 interface CategoryPageClientProps {
     slug: string;
@@ -94,9 +95,13 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
 
             {/* SEO Content */}
             <section className="px-4 sm:px-6 max-w-7xl mx-auto">
-                <SEOContent
-                    title={`${pageInfo.emoji} ${pageInfo.name} Stylish Names`}
-                    content={pageInfo.seoContent || `
+                {(() => {
+                    const translated = getTranslatedSEO(locale, slug);
+                    const seo = translated || (pageInfo.seoContent ? { seoContent: pageInfo.seoContent, faqItems: pageInfo.faqItems || [] } : null);
+                    return (
+                        <SEOContent
+                            title={`${pageInfo.emoji} ${pageInfo.name} ${locale === 'en' ? 'Stylish Names' : t.siteName}`}
+                            content={seo?.seoContent || `
             <p>${pageInfo.description}. Our <strong>${pageInfo.name} stylish name generator</strong> creates hundreds of unique font styles with decorative symbols that you can copy and paste instantly.</p>
             
             <h3>How to Use ${pageInfo.name} Names</h3>
@@ -116,21 +121,23 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
               <li>Discord and Snapchat usernames</li>
             </ul>
           `}
-                    faqItems={pageInfo.faqItems || [
-                        {
-                            question: `What are ${pageInfo.name.toLowerCase()} stylish names?`,
-                            answer: `${pageInfo.name} stylish names are specially designed text styles using Unicode characters and symbols that give your name a ${pageInfo.name.toLowerCase()} look. They work on all platforms and are free to use.`,
-                        },
-                        {
-                            question: `Can I use ${pageInfo.name.toLowerCase()} names on social media?`,
-                            answer: `Yes! Our ${pageInfo.name.toLowerCase()} stylish names use Unicode characters that work on Instagram, TikTok, Facebook, Twitter, WhatsApp, and most other platforms.`,
-                        },
-                        {
-                            question: `Are ${pageInfo.name.toLowerCase()} names free?`,
-                            answer: `Absolutely! Our ${pageInfo.name.toLowerCase()} name generator is completely free. You can generate unlimited names without any sign-up or download.`,
-                        },
-                    ]}
-                />
+                            faqItems={seo?.faqItems || [
+                                {
+                                    question: `What are ${pageInfo.name.toLowerCase()} stylish names?`,
+                                    answer: `${pageInfo.name} stylish names are specially designed text styles using Unicode characters and symbols that give your name a ${pageInfo.name.toLowerCase()} look. They work on all platforms and are free to use.`,
+                                },
+                                {
+                                    question: `Can I use ${pageInfo.name.toLowerCase()} names on social media?`,
+                                    answer: `Yes! Our ${pageInfo.name.toLowerCase()} stylish names use Unicode characters that work on Instagram, TikTok, Facebook, Twitter, WhatsApp, and most other platforms.`,
+                                },
+                                {
+                                    question: `Are ${pageInfo.name.toLowerCase()} names free?`,
+                                    answer: `Absolutely! Our ${pageInfo.name.toLowerCase()} name generator is completely free. You can generate unlimited names without any sign-up or download.`,
+                                },
+                            ]}
+                        />
+                    );
+                })()}
             </section>
         </div>
     );

@@ -24,6 +24,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }));
 
+    // --- Locale static pages (e.g. /de/about, /fr/privacy-policy) ---
+    const staticSlugs = ['about', 'privacy-policy', 'terms'];
+    const localeStaticPages = nonDefaultLocales.flatMap(locale =>
+        staticSlugs.map(slug => ({
+            url: `${baseUrl}/${locale}/${slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.4,
+        }))
+    );
+
     // --- Category pages (English) ---
     const categoryPages = categories.map(cat => ({
         url: `${baseUrl}/${cat.slug}`,
@@ -87,20 +98,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     );
 
-    // --- Favorites ---
-    const miscPages = [
-        { url: `${baseUrl}/favorites`, lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.6 },
-    ];
+    // --- Favorites excluded — user-specific content, empty for crawlers ---
 
     return [
         ...staticPages,
         ...localeHomepages,
+        ...localeStaticPages,
         ...categoryPages,
         ...platformPages,
         ...localeCategoryPages,
         ...dynamicToolPages,
         ...dedicatedToolPages,
         ...localeToolPages,
-        ...miscPages,
     ];
 }

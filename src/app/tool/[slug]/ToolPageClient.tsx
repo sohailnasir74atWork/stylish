@@ -12,6 +12,7 @@ import Link from 'next/link';
 import ToolCards from '@/components/ToolCards';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
 
 interface ToolPageClientProps {
     slug: string;
@@ -103,9 +104,13 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
 
             {/* SEO */}
             <section className="px-4 sm:px-6 max-w-7xl mx-auto">
-                <SEOContent
-                    title={`${tool.emoji} ${tool.name}`}
-                    content={tool.seoContent || `
+                {(() => {
+                    const translated = getTranslatedSEO(locale, tool.slug);
+                    const seo = translated || (tool.seoContent ? { seoContent: tool.seoContent, faqItems: tool.faqItems || [] } : null);
+                    return (
+                        <SEOContent
+                            title={`${tool.emoji} ${tool.name}`}
+                            content={seo?.seoContent || `
             <p>${tool.description}. Our <strong>${tool.name}</strong> converts your plain text into beautiful ${tool.name.toLowerCase().replace(' generator', '')} fonts that you can copy and paste anywhere.</p>
             
             <h3>How to Use the ${tool.name}</h3>
@@ -119,21 +124,23 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
             <h3>What Are ${tool.name.replace(' Generator', '')} Fonts?</h3>
             <p>${tool.name.replace(' Generator', '')} fonts are special Unicode characters that mimic the appearance of ${tool.name.toLowerCase().replace(' generator', '')} typefaces. Unlike regular fonts that require installation, these work everywhere because they are actual Unicode characters supported by all modern devices.</p>
           `}
-                    faqItems={tool.faqItems || [
-                        {
-                            question: `What is a ${tool.name.toLowerCase()}?`,
-                            answer: `A ${tool.name.toLowerCase()} converts your regular text into ${tool.name.toLowerCase().replace(' generator', '')} style Unicode fonts. These are real characters that work on any device and platform without requiring font installation.`,
-                        },
-                        {
-                            question: `Where can I use ${tool.name.toLowerCase().replace(' generator', '')} fonts?`,
-                            answer: `You can use ${tool.name.toLowerCase().replace(' generator', '')} fonts on Instagram, TikTok, Facebook, WhatsApp, Discord, gaming platforms like PUBG and Free Fire, and anywhere that supports Unicode text.`,
-                        },
-                        {
-                            question: `Is the ${tool.name.toLowerCase()} free?`,
-                            answer: `Yes! Our ${tool.name.toLowerCase()} is completely free to use. Generate unlimited ${tool.name.toLowerCase().replace(' generator', '')} text without sign-up or downloads.`,
-                        },
-                    ]}
-                />
+                            faqItems={seo?.faqItems || [
+                                {
+                                    question: `What is a ${tool.name.toLowerCase()}?`,
+                                    answer: `A ${tool.name.toLowerCase()} converts your regular text into ${tool.name.toLowerCase().replace(' generator', '')} style Unicode fonts. These are real characters that work on any device and platform without requiring font installation.`,
+                                },
+                                {
+                                    question: `Where can I use ${tool.name.toLowerCase().replace(' generator', '')} fonts?`,
+                                    answer: `You can use ${tool.name.toLowerCase().replace(' generator', '')} fonts on Instagram, TikTok, Facebook, WhatsApp, Discord, gaming platforms like PUBG and Free Fire, and anywhere that supports Unicode text.`,
+                                },
+                                {
+                                    question: `Is the ${tool.name.toLowerCase()} free?`,
+                                    answer: `Yes! Our ${tool.name.toLowerCase()} is completely free to use. Generate unlimited ${tool.name.toLowerCase().replace(' generator', '')} text without sign-up or downloads.`,
+                                },
+                            ]}
+                        />
+                    );
+                })()}
             </section>
         </div>
     );
