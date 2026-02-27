@@ -3,7 +3,7 @@
 export const SITE_NAME = 'Stylish Names';
 export const SITE_TAGLINE = 'Create Beautiful Stylish Names — Copy & Paste';
 export const SITE_DESCRIPTION = 'Generate 1000+ stylish names with cool fonts, symbols, and decorations for gaming profiles, Instagram, TikTok, WhatsApp, and more. Free copy and paste!';
-export const SITE_URL = 'https://stylishnames.com'; // Update with actual domain
+export const SITE_URL = 'https://stylish-names.com';
 
 export const DEFAULT_INPUT = 'Your Name';
 export const MAX_INPUT_LENGTH = 50;

@@ -95,6 +95,12 @@ export default async function RootLayout({
     <html lang={locale} dir={rtl ? 'rtl' : 'ltr'} className={inter.variable}>
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>" />
+        {/* Google AdSense Auto Ads */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3701208411582706"
+          crossOrigin="anonymous"
+        />
         {/* Hreflang tags for all locales */}
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
         {locales.map(loc => (
