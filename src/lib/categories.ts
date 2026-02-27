@@ -154,6 +154,22 @@ export const categories: Category[] = [
         metaDescription: 'Generate attitude-filled stylish names with swag symbols and confident fonts. Show your personality with boss-level name styles. Free!',
         heroText: 'Show the world your attitude with confident, swag-filled name styles. Bold fonts and powerful symbols for true bosses.',
         charMapCategory: 'attitude',
+        seoContent: `<p>An <strong>attitude stylish name</strong> tells people who you are without saying a word. Whether you are a gamer, social media user, or just someone who likes to stand out, an attitude name makes you look confident and bold. Our attitude name generator creates powerful names with strong fonts and boss-level symbols.</p>
+
+<h3>Best Attitude Name Ideas</h3>
+<ul>
+  <li><strong>Boss names</strong> — Silent Killer, Lone Wolf, Savage King, Dark Devil</li>
+  <li><strong>Swag names</strong> — Mr Perfect, Bad Boy, Attitude King, Royal Player</li>
+  <li><strong>Girl attitude</strong> — Queen of Hearts, Boss Babe, Drama Queen, Fierce Girl</li>
+  <li><strong>Short attitude</strong> — Danger, Toxic, Rebel, Beast, Legend</li>
+</ul>
+
+<h3>Why Attitude Names Are Popular</h3>
+<p>Attitude names are the most searched name style online. People use them on <strong>Instagram bio</strong>, <strong>WhatsApp status</strong>, <strong>PUBG</strong>, and <strong>Free Fire</strong>. A strong attitude name makes your profile look powerful and gets more attention. Just type your name above, pick an attitude style, and copy it.</p>`,
+        faqItems: [
+            { question: 'What is an attitude stylish name?', answer: 'An attitude stylish name is a bold, confident-looking name made with special Unicode fonts and symbols. It shows swagger and personality. Popular examples include Lone Wolf, Savage King, and Boss Boy.' },
+            { question: 'Where can I use attitude names?', answer: 'Attitude names work everywhere — Instagram bio, WhatsApp status, PUBG, Free Fire, TikTok, Facebook, and all social media. They use Unicode characters that are supported on all devices.' },
+        ],
     },
     {
         slug: 'happy',
@@ -336,6 +352,23 @@ export const categories: Category[] = [
         metaDescription: 'Create stylish couple names with romantic fonts and love symbols. King & Queen, His & Hers matching name pairs. Wifey & Hubby styles. Free copy paste!',
         heroText: 'Express your love with stylish couple names. Romantic fonts, matching pairs, and love-themed designs for you and your partner.',
         charMapCategory: 'love',
+        seoContent: `<p>Looking for <strong>stylish couple names</strong>? Our couple name generator creates beautiful matching name pairs with romantic fonts, hearts, and love symbols. Whether you and your partner want matching Instagram bios, WhatsApp names, or game squad names, we have the perfect romantic styles.</p>
+
+<h3>Popular Couple Name Ideas</h3>
+<ul>
+  <li><strong>King & Queen</strong> — ♔ King + ♕ Queen matching pairs</li>
+  <li><strong>His & Hers</strong> — Matching romantic fonts for both partners</li>
+  <li><strong>Hubby & Wifey</strong> — Cute married couple names</li>
+  <li><strong>BF & GF</strong> — Boyfriend and girlfriend matching styles</li>
+  <li><strong>Soulmates</strong> — Deep romantic name pairs with heart symbols</li>
+</ul>
+
+<h3>How to Use Couple Names</h3>
+<p>Type one name at a time (like your name first, then your partner's name). Pick the same font style for both names so they match. Add love symbols like ♡ ♥ 💕 between them. Copy and paste to your Instagram bio, WhatsApp profile, or game names. Many couples use matching names on <strong>Free Fire</strong> and <strong>PUBG</strong> squads too.</p>`,
+        faqItems: [
+            { question: 'How to make matching couple names?', answer: 'Type your name first and pick a style. Then type your partner\'s name and pick the same style. This creates a matching pair. Add hearts (♡ ♥) between the names for a romantic look.' },
+            { question: 'Can I use couple names on games?', answer: 'Yes! Many couples use matching stylish names on PUBG, Free Fire, and other games. It shows you are a duo team. Our names use Unicode that works in most games.' },
+        ],
     },
     {
         slug: 'group-name',
@@ -420,6 +453,22 @@ export const platforms: Platform[] = [
         metaTitle: 'TikTok Stylish Name Generator | Cool Profile Names 🎵',
         metaDescription: 'Generate cool and stylish names for your TikTok profile. Unique fonts and symbols that work perfectly. Free copy and paste!',
         heroText: 'Get the trendiest name styles for your TikTok profile. Cool fonts, unique symbols, and styles that match the TikTok vibe.',
+        seoContent: `<p>Your <strong>TikTok name</strong> is your brand. On a platform with millions of creators, a stylish display name helps you stand out and get remembered. Our TikTok name generator creates trendy Unicode fonts that work perfectly on your TikTok profile, bio, and display name.</p>
+
+<h3>TikTok Name Ideas by Niche</h3>
+<ul>
+  <li><strong>Content creators</strong> — Viral King, Trend Setter, FYP King, Content Creator</li>
+  <li><strong>Dancers</strong> — Dance Machine, Groove Queen, Rhythm King</li>
+  <li><strong>Comedy</strong> — Skit King, Funny Guy, Comedy Queen</li>
+  <li><strong>Aesthetic</strong> — Soft Girl Era, Dark Aesthetic, Main Character</li>
+</ul>
+
+<h3>TikTok Name Tips</h3>
+<p>TikTok display names can be up to <strong>30 characters</strong>. Your username (@handle) has more restrictions and may not support all Unicode fonts. But your <strong>display name</strong> (the one shown on your profile) supports most of our stylish fonts. A catchy font makes people more likely to follow you when they see your videos on the For You Page.</p>`,
+        faqItems: [
+            { question: 'How to change TikTok username font?', answer: 'You cannot change your TikTok username (@handle) font, but you can change your display name font. Use our generator, copy a stylish name, go to TikTok Profile > Edit Profile > Name and paste it.' },
+            { question: 'Do stylish fonts help get more TikTok followers?', answer: 'A unique display name makes your profile stand out when people see your videos. It helps with branding and makes you more memorable, which can lead to more followers.' },
+        ],
     },
     {
         slug: 'whatsapp',
@@ -429,6 +478,22 @@ export const platforms: Platform[] = [
         metaTitle: 'WhatsApp Stylish Name Generator | Cool Status & Profile Names 💬',
         metaDescription: 'Create stylish names and fonts for your WhatsApp profile name and status. Beautiful Unicode fonts that work instantly. Free copy paste!',
         heroText: 'Upgrade your WhatsApp profile with stylish names and fonts. Perfect for profile names, status updates, and group names.',
+        seoContent: `<p>Make your <strong>WhatsApp profile name</strong> look stylish with unique fonts and symbols. Most people have boring plain text names on WhatsApp. A stylish name makes your profile stand out in chat lists and group members. Our WhatsApp name generator creates names that work perfectly on WhatsApp profile, status, and group names.</p>
+
+<h3>WhatsApp Name Ideas</h3>
+<ul>
+  <li><strong>Attitude names</strong> — Attitude King, Last Seen Never, Silent Killer</li>
+  <li><strong>Love names</strong> — Love Yourself, Dreamer, Blessed, On Fire</li>
+  <li><strong>Status names</strong> — Self Made, Savage Mode, Keep It Real</li>
+  <li><strong>Group names</strong> — Squad Goals, Best Friends Forever, The Legends</li>
+</ul>
+
+<h3>How to Change WhatsApp Name Font</h3>
+<p>Open WhatsApp > Settings > tap your name > edit. Paste the stylish name from our generator. WhatsApp allows up to <strong>25 characters</strong> for your profile name. You can also use stylish text in your <strong>About/Status</strong> section (139 characters) and <strong>group names</strong> (100 characters). Our fonts work on both Android and iPhone WhatsApp.</p>`,
+        faqItems: [
+            { question: 'How to get stylish name on WhatsApp?', answer: 'Use our generator: type your name, pick a style, copy it. Then open WhatsApp > Settings > tap your name > paste the stylish name. It will show up instantly for all your contacts.' },
+            { question: 'What is the WhatsApp name character limit?', answer: 'WhatsApp allows 25 characters for profile name, 139 characters for About/Status, and 100 characters for group names. Some Unicode symbols count as 2 characters.' },
+        ],
     },
     {
         slug: 'facebook',
@@ -438,6 +503,22 @@ export const platforms: Platform[] = [
         metaTitle: 'Facebook Stylish Name Generator | Cool Profile Names 👤',
         metaDescription: 'Generate stylish names for your Facebook profile. Unique fonts and symbols that make your profile stand out. Free and instant!',
         heroText: 'Transform your Facebook profile with stylish names and unique fonts. Stand out in comments, posts, and your profile.',
+        seoContent: `<p>A <strong>stylish Facebook name</strong> makes your profile look unique among billions of users. While Facebook has strict rules about names, you can still use Unicode fonts for your display name. Our Facebook name generator creates beautiful fonts that are accepted by Facebook and look amazing on your profile, in comments, and on posts.</p>
+
+<h3>Facebook Name Tips</h3>
+<ul>
+  <li><strong>Display name</strong> — Use cursive or bold fonts for an elegant look</li>
+  <li><strong>Comments</strong> — Stylish text in comments gets more attention</li>
+  <li><strong>Posts</strong> — Use fancy fonts in your status updates</li>
+  <li><strong>Gaming</strong> — Facebook Gaming profiles support Unicode names</li>
+</ul>
+
+<h3>Important Facebook Name Rules</h3>
+<p>Facebook requires you to use your real name. But you can style it with Unicode fonts. For example, "John" can become "𝒥𝑜𝒽𝓃" or "𝕁𝕠𝕙𝕟". Avoid using too many symbols or completely unreadable names — Facebook may flag them. Subtle styling like bold, italic, or cursive fonts usually work without issues.</p>`,
+        faqItems: [
+            { question: 'Does Facebook allow stylish names?', answer: 'Facebook requires real names but accepts Unicode font variations of your name. Cursive, bold, and italic versions of your real name usually work. Avoid excessive symbols or fake names as Facebook may require ID verification.' },
+            { question: 'How to change Facebook name font?', answer: 'Use our generator to create a stylish version of your name, copy it, then go to Facebook > Settings > Personal Details > Name and paste it. Facebook may take a few days to review the change.' },
+        ],
     },
     {
         slug: 'free-fire',
@@ -497,6 +578,22 @@ export const platforms: Platform[] = [
         metaTitle: 'Discord Stylish Name Generator | Cool Username Fonts 🎮',
         metaDescription: 'Create stylish Discord usernames with unique fonts and symbols. Stand out in servers with cool name styles. Free copy and paste!',
         heroText: 'Level up your Discord presence with stylish usernames. Cool fonts, unique symbols, and styles that pop in any server.',
+        seoContent: `<p>Your <strong>Discord username</strong> is your identity across every server you join. A stylish Discord name with unique fonts makes you stand out in member lists, chat messages, and voice channels. Our Discord name generator creates cool Unicode fonts that work perfectly on Discord — no Nitro required.</p>
+
+<h3>Discord Name Ideas</h3>
+<ul>
+  <li><strong>Gaming names</strong> — Gamer Lord, Server King, Admin God, Combat Pro</li>
+  <li><strong>Aesthetic names</strong> — Moon Child, Dark Aesthetic, Neon Vibes</li>
+  <li><strong>Funny names</strong> — Mod Bot, Pirate King, Voice Chat King</li>
+  <li><strong>Server admin names</strong> — Server Boss, Nitro Booster, Streamer</li>
+</ul>
+
+<h3>Discord Name Rules</h3>
+<p>Discord usernames can be up to <strong>32 characters</strong>. Discord recently switched to a new username system — your display name now supports Unicode fonts and is what people see in servers. Your unique username (the one with no discriminator) has more restrictions. Use stylish fonts in your <strong>display name</strong> for the best results.</p>`,
+        faqItems: [
+            { question: 'How to get a stylish name on Discord?', answer: 'Use our generator to create a stylish name. Then go to Discord > User Settings > Edit Profile > Display Name and paste it. Your display name supports most Unicode fonts.' },
+            { question: 'Do I need Nitro for stylish Discord names?', answer: 'No! Stylish names use Unicode characters that work for all Discord users — free and Nitro. You do not need any special subscription to use fancy fonts in your display name.' },
+        ],
     },
     // New platforms
     {
@@ -552,6 +649,22 @@ export const platforms: Platform[] = [
         metaTitle: 'Roblox Stylish Name Generator | Cool Gaming Usernames 🧱',
         metaDescription: 'Generate stylish Roblox usernames with cool fonts and gaming symbols. Stand out in Roblox games. Free copy and paste!',
         heroText: 'Build your Roblox identity with stylish usernames. Creative fonts, gaming symbols, and designs that stand out in any game.',
+        seoContent: `<p>A <strong>stylish Roblox name</strong> makes you look like a pro player in any Roblox game. Whether you play Blox Fruits, Adopt Me, Tower Defense, or any experience, your display name is how others know you. Our Roblox name generator creates cool fonts that work as Roblox display names.</p>
+
+<h3>Roblox Name Ideas</h3>
+<ul>
+  <li><strong>Gaming names</strong> — Blox Master, Obby God, Game Creator, Combat Pro</li>
+  <li><strong>Rich names</strong> — Robux King, Diamond Player, Premium Gamer</li>
+  <li><strong>Fun names</strong> — Adopt Me Star, Speed Run, Shark Bite, Blox Fruits King</li>
+  <li><strong>Cool names</strong> — Dark Knight, Shadow Ninja, Fire Lord</li>
+</ul>
+
+<h3>Roblox Display Name Rules</h3>
+<p>Roblox has two names: your <strong>username</strong> (permanent, limited characters) and your <strong>display name</strong> (changeable, supports some Unicode). Display names can be changed every 7 days and allow up to <strong>20 characters</strong>. Not all Unicode fonts work on Roblox — our generator focuses on fonts that Roblox accepts. Test your name before finalizing.</p>`,
+        faqItems: [
+            { question: 'How to get a stylish Roblox display name?', answer: 'Use our generator, copy a stylish name, then go to Roblox > Settings > Display Name and paste it. You can change your display name once every 7 days.' },
+            { question: 'Do all fonts work on Roblox?', answer: 'Not all Unicode fonts work on Roblox. Roblox filters some special characters. Our generator includes fonts that are commonly accepted. Always test the name before finalizing.' },
+        ],
     },
     {
         slug: 'fortnite',
