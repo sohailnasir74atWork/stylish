@@ -7,11 +7,12 @@ import type { StyledResult } from '@/lib/unicodeEngine';
 interface StyleGridProps {
     results: StyledResult[];
     showSearch?: boolean;
+    onCopy?: () => void;
 }
 
 const ITEMS_PER_PAGE = 60;
 
-export default function StyleGrid({ results, showSearch = true }: StyleGridProps) {
+export default function StyleGrid({ results, showSearch = true, onCopy }: StyleGridProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
     const [allLight, setAllLight] = useState(false);
@@ -63,8 +64,8 @@ export default function StyleGrid({ results, showSearch = true }: StyleGridProps
                     <button
                         onClick={() => setAllLight(prev => !prev)}
                         className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-300 ${allLight
-                                ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                                : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                            : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
                             }`}
                     >
                         {allLight ? '☀️ Light Preview' : '🌙 Dark Preview'}
@@ -85,6 +86,7 @@ export default function StyleGrid({ results, showSearch = true }: StyleGridProps
                         result={result}
                         index={i}
                         defaultLight={allLight}
+                        onCopied={onCopy}
                     />
                 ))}
             </div>

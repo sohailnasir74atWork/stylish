@@ -1,0 +1,22 @@
+{
+    "name": "Stylish Names",
+    "short_name": "StylishNames",
+    "description": "Create Beautiful Stylish Names with Cool Fonts & Symbols — Copy & Paste",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#06061a",
+    "theme_color": "#8b5cf6",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

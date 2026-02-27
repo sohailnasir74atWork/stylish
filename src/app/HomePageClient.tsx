@@ -2,18 +2,26 @@
 
 import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import TextInput from '@/components/TextInput';
 import StyleGrid from '@/components/StyleGrid';
 import CategoryTabs from '@/components/CategoryTabs';
-import RecentNames from '@/components/RecentNames';
 import SEOContent from '@/components/SEOContent';
 import { generateAllStyles } from '@/lib/unicodeEngine';
 import { DEFAULT_INPUT } from '@/lib/constants';
-import ToolCards from '@/components/ToolCards';
 import Link from 'next/link';
 import { TOOL_NAV_LINKS, PLATFORM_NAV_LINKS } from '@/lib/constants';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
+import { useCopyCounter } from '@/hooks/useCopyCounter';
+
+// Lazy-load below-fold components to reduce initial bundle
+const ToolCards = dynamic(() => import('@/components/ToolCards'), {
+    loading: () => <div className="px-4 sm:px-6 max-w-7xl mx-auto mb-10 h-[140px]" />,
+});
+const RecentNames = dynamic(() => import('@/components/RecentNames'), {
+    loading: () => <div className="h-[80px]" />,
+});
 
 interface HomePageClientProps {
     locale: Locale;
@@ -32,6 +40,7 @@ function HomePageInner({ t }: { t: Dictionary }) {
     const searchParams = useSearchParams();
     const nameFromUrl = searchParams.get('name');
     const [inputText, setInputText] = useState(nameFromUrl || DEFAULT_INPUT);
+    const { formatted: copyCount, increment: incrementCopy } = useCopyCounter();
 
     // Update input when ?name= query param changes (from Name Ideas page)
     useEffect(() => {
@@ -44,8 +53,8 @@ function HomePageInner({ t }: { t: Dictionary }) {
 
     return (
         <div className="min-h-screen">
-            {/* Hero Section */}
-            <section className="relative py-4 sm:py-12 px-4 text-center overflow-hidden">
+            {/* Hero Section — fixed min-height prevents CLS */}
+            <section className="relative py-4 sm:py-12 px-4 text-center overflow-hidden min-h-[160px] sm:min-h-[220px]">
                 {/* Decorative elements */}
                 <div className="absolute top-10 left-10 text-5xl opacity-20 animate-float">✨</div>
                 <div className="absolute top-20 right-20 text-4xl opacity-15 animate-float" style={{ animationDelay: '2s' }}>🎮</div>
@@ -56,13 +65,17 @@ function HomePageInner({ t }: { t: Dictionary }) {
                         {t.heroTitle}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-6">
+                <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-4">
                     {t.heroSubtitle} ✨
                 </p>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-gray-400">
+                    <span className="text-lg">✨</span>
+                    <span><strong className="text-white">{copyCount}</strong> names generated</span>
+                </div>
             </section>
 
-            {/* Sticky Input — always visible while scrolling, positioned below header */}
-            <div className="sticky top-[64px] sm:top-[104px] z-40 py-2 sm:py-3 px-4">
+            {/* Sticky Input — fixed min-height prevents CLS */}
+            <div className="sticky top-[64px] sm:top-[104px] z-40 py-2 sm:py-3 px-4 min-h-[56px] sm:min-h-[64px]">
                 <div className="max-w-2xl mx-auto">
                     <TextInput onTextChange={setInputText} defaultValue={nameFromUrl || DEFAULT_INPUT} value={inputText} />
                 </div>
@@ -83,7 +96,7 @@ function HomePageInner({ t }: { t: Dictionary }) {
 
             {/* Results Grid */}
             <section className="px-4 sm:px-6 max-w-7xl mx-auto mb-6 sm:mb-12">
-                <StyleGrid results={results} />
+                <StyleGrid results={results} onCopy={incrementCopy} />
             </section>
 
             {/* Platform Links */}
