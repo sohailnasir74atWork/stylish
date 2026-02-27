@@ -95,7 +95,7 @@ function HomePageInner({ t }: { t: Dictionary }) {
             </section>
 
             {/* Results Grid */}
-            <section className="px-4 sm:px-6 max-w-7xl mx-auto mb-6 sm:mb-12">
+            <section id="style-results" className="px-4 sm:px-6 max-w-7xl mx-auto mb-6 sm:mb-12">
                 <StyleGrid results={results} onCopy={incrementCopy} />
             </section>
 

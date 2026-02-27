@@ -62,7 +62,12 @@ export default function TextInput({ onTextChange, defaultValue, placeholder, val
                             )}
                         </div>
                         <button
-                            onClick={() => onTextChange(text || DEFAULT_INPUT)}
+                            onClick={() => {
+                                onTextChange(text || DEFAULT_INPUT);
+                                setTimeout(() => {
+                                    document.getElementById('style-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }, 100);
+                            }}
                             className="px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 active:scale-95 whitespace-nowrap text-sm sm:text-base"
                         >
                             ✨ Generate
