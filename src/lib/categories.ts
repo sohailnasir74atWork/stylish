@@ -9,6 +9,8 @@ export interface Category {
     metaDescription: string;
     heroText: string;
     charMapCategory: string; // maps to charMaps category
+    seoContent?: string; // unique SEO HTML content for this page
+    faqItems?: { question: string; answer: string }[]; // unique FAQ
 }
 
 export const categories: Category[] = [
@@ -21,6 +23,26 @@ export const categories: Category[] = [
         metaDescription: 'Create stylish gaming names for PUBG, Free Fire, COD Mobile, and Fortnite. Generate cool nicknames with symbols and fancy fonts. Copy and paste instantly!',
         heroText: 'Dominate the battlefield with a stylish gaming name. Create unique nicknames for PUBG, Free Fire, COD Mobile, and more. Stand out in the lobby!',
         charMapCategory: 'gaming',
+        seoContent: `<p>A <strong>stylish gaming name</strong> is the first thing other players see when you enter a match. Whether you play <strong>PUBG Mobile</strong>, <strong>Free Fire</strong>, <strong>BGMI</strong>, <strong>Call of Duty Mobile</strong>, or <strong>Fortnite</strong>, your nickname tells the lobby who you are before you fire a single shot. Our gaming name generator gives you hundreds of unique fonts with swords, skulls, crowns, and special symbols that actually work in-game.</p>
+
+<h3>Why Use a Stylish Gaming Name?</h3>
+<p>A plain name like "player123" is forgettable. But a name like <strong>꧁༒☬𝓓𝓪𝓻𝓴𝓚𝓷𝓲𝓰𝓱𝓽☬༒꧂</strong> makes you look like a pro. Stylish names help you stand out in kill feeds, lobbies, and friend lists. Many pro gamers and streamers use decorated names to build their brand. Our tool makes it easy — just type, pick, and copy.</p>
+
+<h3>Best Gaming Name Ideas</h3>
+<ul>
+  <li><strong>Aggressive names</strong> — Dark Knight, Phantom Reaper, Shadow Assassin</li>
+  <li><strong>Pro gamer tags</strong> — Headshot God, Sniper Elite, One Tap King</li>
+  <li><strong>Funny nicknames</strong> — Noob Killer, AFK Legend, Camper King</li>
+  <li><strong>Clan names</strong> — Elite Squad, Dark Army, Kings of Gaming</li>
+</ul>
+
+<h3>Tips for Gaming Names</h3>
+<p>Keep your name under 12-16 characters. Most games have character limits. Test the name in-game before making it permanent — some symbols may not display on all devices. Use our compatibility checker tool to verify your name works on your game.</p>`,
+        faqItems: [
+            { question: 'What symbols work in PUBG and Free Fire names?', answer: 'Most Unicode symbols like ꧁ ꧂ ☬ ★ ⚡ ♛ work in PUBG Mobile and Free Fire. Our generator only uses symbols that are game-compatible. Always test in-game before finalizing.' },
+            { question: 'How many characters can a gaming name have?', answer: 'PUBG Mobile allows up to 14 characters. Free Fire allows 12 characters. COD Mobile allows 16 characters. Some Unicode symbols count as 2 characters, so keep it short.' },
+            { question: 'Can I change my gaming name later?', answer: 'Yes! Most games let you change your name using a rename card. PUBG gives one free rename, Free Fire requires diamonds. Generate your perfect name first, then change it in-game.' },
+        ],
     },
     {
         slug: 'cute',
@@ -252,6 +274,22 @@ export const categories: Category[] = [
         metaDescription: 'Generate stylish names for boys with cool fonts, symbols, and decorations. Attitude boy names, dashing styles, and more. Copy and paste instantly!',
         heroText: 'Get the most stylish boy names with cool fonts and dashing designs. Perfect for gaming profiles, Instagram bio, and social media. Stand out like a king!',
         charMapCategory: 'cool',
+        seoContent: `<p>Looking for a <strong>stylish name for boy</strong>? You are in the right place. Our boy name generator creates cool, attitude-filled names with bold fonts and powerful symbols. Whether you want a name for your Instagram bio, PUBG profile, WhatsApp status, or TikTok username, we have hundreds of styles that make you look like a boss.</p>
+
+<h3>Popular Boy Name Styles</h3>
+<ul>
+  <li><strong>Attitude names</strong> — Bad Boy, Rebel, Silent Killer, Savage King</li>
+  <li><strong>Royal names</strong> — Royal King, Dark Prince, Dark Lord, Boss Boy</li>
+  <li><strong>Cool names</strong> — Lone Wolf, Alpha Male, Heartless, Hunter</li>
+  <li><strong>Gaming names</strong> — Headshot Machine, Shadow Assassin, Night Hawk</li>
+</ul>
+
+<h3>How Boys Use Stylish Names</h3>
+<p>Boys use stylish names to stand out on social media and gaming platforms. An <strong>attitude boy name</strong> with bold fonts shows confidence. A <strong>cool boy name</strong> with unique symbols gets noticed in friend lists. Just type your name above, pick a style, and copy it. It takes 5 seconds and works everywhere.</p>`,
+        faqItems: [
+            { question: 'What are the best stylish names for boys?', answer: 'Popular boy names include King of Style, Bad Boy, Alpha Male, Dark Prince, Lone Wolf, and Boss Boy. Our generator turns these into stylish fonts with symbols you can copy and paste.' },
+            { question: 'Can I use boy names on PUBG and Free Fire?', answer: 'Yes! All our stylish boy names use Unicode characters that work on PUBG, Free Fire, BGMI, and most mobile games.' },
+        ],
     },
     {
         slug: 'girl',
@@ -262,6 +300,22 @@ export const categories: Category[] = [
         metaDescription: 'Create beautiful stylish names for girls with cute fonts, hearts, flowers, and trendy symbols. Perfect for Instagram, TikTok, and WhatsApp. Free copy paste!',
         heroText: 'Find the prettiest stylish girl names with beautiful fonts and cute decorations. Hearts, butterflies, sparkles — make your profile shine!',
         charMapCategory: 'cute',
+        seoContent: `<p>Want a <strong>stylish name for girl</strong> that looks beautiful on your profile? Our girl name generator creates gorgeous names with cute hearts, flowers, butterflies, and kawaii fonts. Whether you need a name for Instagram, TikTok, WhatsApp, or Snapchat, we have styles that are pretty, elegant, and totally unique.</p>
+
+<h3>Trending Girl Name Styles</h3>
+<ul>
+  <li><strong>Cute names</strong> — Princess, Sweet Angel, Cute Doll, Baby Girl</li>
+  <li><strong>Queen names</strong> — Queen Bee, Queen of Hearts, Boss Babe</li>
+  <li><strong>Aesthetic names</strong> — Moon Child, Butterfly Girl, Star Girl</li>
+  <li><strong>Beautiful names</strong> — Rose Princess, Diamond Girl, Lovely Girl</li>
+</ul>
+
+<h3>Where Girls Use Stylish Names</h3>
+<p>Stylish girl names are most popular on <strong>Instagram bio</strong> and <strong>TikTok profiles</strong>. A pretty name with hearts and flowers makes your profile look beautiful and attracts more followers. You can also use them on WhatsApp status, Snapchat display name, and Facebook profile. Just type your name, pick a style, and paste it anywhere.</p>`,
+        faqItems: [
+            { question: 'What are the best stylish names for girls?', answer: 'Top picks include Princess, Queen Bee, Butterfly Girl, Sweet Angel, and Moon Child. Our generator creates these in beautiful fonts with hearts, flowers, and sparkle symbols.' },
+            { question: 'Do girl names work on Instagram and TikTok?', answer: 'Yes! Our stylish girl names use Unicode characters that work perfectly on Instagram bio, TikTok username, WhatsApp profile, and all social media apps.' },
+        ],
     },
     {
         slug: 'beautiful',
@@ -324,6 +378,8 @@ export interface Platform {
     metaTitle: string;
     metaDescription: string;
     heroText: string;
+    seoContent?: string;
+    faqItems?: { question: string; answer: string }[];
 }
 
 export const platforms: Platform[] = [
@@ -335,6 +391,26 @@ export const platforms: Platform[] = [
         metaTitle: 'Instagram Stylish Name Generator | Cool Bio & Profile Fonts 📸',
         metaDescription: 'Create stylish names and fonts for your Instagram bio, profile name, and captions. Stand out with unique Unicode fonts. Free copy and paste!',
         heroText: 'Make your Instagram profile stand out with stylish fonts and cool names. Perfect for bio, username, and captions.',
+        seoContent: `<p>Your <strong>Instagram name</strong> is the first thing people see on your profile. A plain name blends in with millions of other accounts. But a <strong>stylish Instagram name</strong> with unique fonts and symbols instantly grabs attention and makes people want to follow you. Our Instagram name generator creates beautiful Unicode fonts that work in your Instagram bio, display name, and captions.</p>
+
+<h3>Best Instagram Name Ideas</h3>
+<ul>
+  <li><strong>Aesthetic bios</strong> — Soft Girl Era, Dark Aesthetic, Moon Child, Main Character</li>
+  <li><strong>Cute names</strong> — Sweet Angel, Star Girl, Butterfly Girl, That Girl</li>
+  <li><strong>Boss names</strong> — Boss Babe, Iconic, Luxury Life, Glow Up</li>
+  <li><strong>Boy names</strong> — King of Style, Alpha Male, Savage King, Lone Wolf</li>
+</ul>
+
+<h3>How to Change Your Instagram Name Font</h3>
+<p>Instagram does not let you change fonts normally. But our tool uses <strong>Unicode characters</strong> that look like different fonts. Here is how: 1) Type your name above. 2) Pick a style you like. 3) Copy it. 4) Go to Instagram > Edit Profile > Name. 5) Paste your new stylish name. That is it — your profile now has a unique font that nobody else has.</p>
+
+<h3>Tips for Instagram Bio Fonts</h3>
+<p>Keep your bio name under 30 characters. Use symbols like ✨ 🦋 💫 to add personality. Avoid too many special characters in your username (@ handle) because Instagram may not accept all Unicode there. Your <strong>display name</strong> and <strong>bio</strong> support most stylish fonts.</p>`,
+        faqItems: [
+            { question: 'How do I get a stylish name on Instagram?', answer: 'Use our generator: type your name, pick a style, copy it, then go to Instagram > Edit Profile > Name and paste it. The stylish font will show up on your profile instantly.' },
+            { question: 'Do stylish fonts work in Instagram bio?', answer: 'Yes! Instagram bio and display name both support Unicode fonts. Your username (@ handle) has limited support, but your display name and bio work with all our fonts.' },
+            { question: 'Will stylish names affect my Instagram reach?', answer: 'No. Stylish names use standard Unicode characters. They do not affect your reach, engagement, or algorithm. They just make your profile look more attractive.' },
+        ],
     },
     {
         slug: 'tiktok',
@@ -371,6 +447,22 @@ export const platforms: Platform[] = [
         metaTitle: 'Free Fire Stylish Name Generator | Cool Nicknames & Symbols 🔥',
         metaDescription: 'Create stylish Free Fire nicknames with cool symbols and fonts. Generate names that work in-game. Free copy and paste name generator!',
         heroText: 'Stand out in Free Fire lobbies with the coolest nicknames. Special symbols that work in-game, unique fonts, and pro-level name designs.',
+        seoContent: `<p><strong>Free Fire stylish names</strong> help you stand out in the game lobby. Your name is what other players see in the kill feed, on the leaderboard, and in your squad. A cool name with symbols like ꧁ ⚡ ☬ 🔥 makes you look like a pro player. Our Free Fire name generator creates names that actually work in-game — no broken characters.</p>
+
+<h3>Best Free Fire Name Ideas</h3>
+<ul>
+  <li><strong>Pro names</strong> — Headshot King, One Tap King, Grand Master, FF God</li>
+  <li><strong>Aggressive names</strong> — Fire Demon, Skull Trooper, Destroyer, Burning Fury</li>
+  <li><strong>Funny names</strong> — Boiled Aloo, Desi Gamer, Boom Boom, Speed Kill</li>
+  <li><strong>Squad names</strong> — Elite Squad, Fire Storm, Free Fire Boss</li>
+</ul>
+
+<h3>Free Fire Name Rules</h3>
+<p>Free Fire allows up to <strong>12 characters</strong> in your nickname. Some Unicode symbols count as 2 characters. You need <strong>diamonds or a name change card</strong> to change your name in Free Fire. So pick the perfect name before you change it. Our generator shows you exactly how each name looks before you copy it.</p>`,
+        faqItems: [
+            { question: 'How to get a stylish name in Free Fire?', answer: 'Use our generator to create a stylish name, copy it, then open Free Fire > Profile > Edit Name and paste it. You will need diamonds or a name change card.' },
+            { question: 'What is the character limit for Free Fire names?', answer: 'Free Fire allows up to 12 characters. Some Unicode symbols count as 2 characters, so keep it short. Our generator creates names that fit within this limit.' },
+        ],
     },
     {
         slug: 'pubg',
@@ -380,6 +472,22 @@ export const platforms: Platform[] = [
         metaTitle: 'PUBG Stylish Name Generator | Cool Nicknames & Symbols 🎯',
         metaDescription: 'Generate stylish PUBG nicknames with cool symbols and fonts. Create unique gaming names that work in PUBG Mobile. Free copy paste!',
         heroText: 'Dominate PUBG with a stylish nickname. Special gaming symbols, pro-style fonts, and unique designs to make your mark.',
+        seoContent: `<p>A <strong>stylish PUBG name</strong> makes you stand out in every match. Your name appears on the kill feed, leaderboards, and when players spectate you. Pro players and streamers use decorated names with symbols like ꧁ ☬ ★ ⚡ to build their brand. Our PUBG name generator creates hundreds of cool names that work on PUBG Mobile.</p>
+
+<h3>Top PUBG Name Ideas</h3>
+<ul>
+  <li><strong>Sniper names</strong> — AWM God, Sniper Elite, Headshot Machine</li>
+  <li><strong>Battle names</strong> — Battle God, Conqueror, War Freak, Death Dealer</li>
+  <li><strong>Squad names</strong> — Squad Leader, Pro Player, Royal Elite</li>
+  <li><strong>Fun names</strong> — Pan Warrior, Chicken Dinner, Hot Dropper, Loot King</li>
+</ul>
+
+<h3>PUBG Name Change Guide</h3>
+<p>PUBG Mobile gives you <strong>one free rename</strong>. After that, you need a <strong>Rename Card</strong> from shop or crates. PUBG allows up to <strong>14 characters</strong>. Make sure to choose the perfect name before using your card. Type your name above, browse styles, and copy the one that looks best.</p>`,
+        faqItems: [
+            { question: 'How to change name in PUBG Mobile?', answer: 'Go to your PUBG profile > click on your name > use a Rename Card > paste your stylish name. You get one free rename. After that you need a rename card from the shop.' },
+            { question: 'What symbols work in PUBG names?', answer: 'Most Unicode symbols work in PUBG Mobile including ꧁ ꧂ ☬ ★ ⚡ ♛ ☠️. Our generator only uses PUBG-compatible symbols so every name we generate will work.' },
+        ],
     },
     {
         slug: 'discord',

@@ -96,7 +96,7 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
             <section className="px-4 sm:px-6 max-w-7xl mx-auto">
                 <SEOContent
                     title={`${pageInfo.emoji} ${pageInfo.name} Stylish Names`}
-                    content={`
+                    content={pageInfo.seoContent || `
             <p>${pageInfo.description}. Our <strong>${pageInfo.name} stylish name generator</strong> creates hundreds of unique font styles with decorative symbols that you can copy and paste instantly.</p>
             
             <h3>How to Use ${pageInfo.name} Names</h3>
@@ -116,7 +116,7 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
               <li>Discord and Snapchat usernames</li>
             </ul>
           `}
-                    faqItems={[
+                    faqItems={pageInfo.faqItems || [
                         {
                             question: `What are ${pageInfo.name.toLowerCase()} stylish names?`,
                             answer: `${pageInfo.name} stylish names are specially designed text styles using Unicode characters and symbols that give your name a ${pageInfo.name.toLowerCase()} look. They work on all platforms and are free to use.`,

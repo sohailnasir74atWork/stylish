@@ -105,7 +105,7 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
             <section className="px-4 sm:px-6 max-w-7xl mx-auto">
                 <SEOContent
                     title={`${tool.emoji} ${tool.name}`}
-                    content={`
+                    content={tool.seoContent || `
             <p>${tool.description}. Our <strong>${tool.name}</strong> converts your plain text into beautiful ${tool.name.toLowerCase().replace(' generator', '')} fonts that you can copy and paste anywhere.</p>
             
             <h3>How to Use the ${tool.name}</h3>
@@ -119,7 +119,7 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
             <h3>What Are ${tool.name.replace(' Generator', '')} Fonts?</h3>
             <p>${tool.name.replace(' Generator', '')} fonts are special Unicode characters that mimic the appearance of ${tool.name.toLowerCase().replace(' generator', '')} typefaces. Unlike regular fonts that require installation, these work everywhere because they are actual Unicode characters supported by all modern devices.</p>
           `}
-                    faqItems={[
+                    faqItems={tool.faqItems || [
                         {
                             question: `What is a ${tool.name.toLowerCase()}?`,
                             answer: `A ${tool.name.toLowerCase()} converts your regular text into ${tool.name.toLowerCase().replace(' generator', '')} style Unicode fonts. These are real characters that work on any device and platform without requiring font installation.`,

@@ -8,7 +8,9 @@ export interface ToolPage {
     metaTitle: string;
     metaDescription: string;
     heroText: string;
-    charMapCategory: string; // maps to charMaps category
+    charMapCategory: string;
+    seoContent?: string;
+    faqItems?: { question: string; answer: string }[];
 }
 
 export const tools: ToolPage[] = [
@@ -21,6 +23,22 @@ export const tools: ToolPage[] = [
         metaDescription: 'Generate gothic and blackletter fonts with our free tool. Create dark, medieval-style text for gaming, social media, and more. Copy and paste instantly!',
         heroText: 'Embrace the dark side with gothic blackletter fonts. Medieval-style text that adds mystery and power to any profile.',
         charMapCategory: 'gothic',
+        seoContent: `<p>Our <strong>gothic font generator</strong> creates dark, medieval blackletter text that you can copy and paste anywhere. Gothic fonts are one of the most popular text styles for gaming profiles, social media bios, and anywhere you want to look powerful and mysterious. These fonts use Unicode characters, so they work on every device without installing anything.</p>
+
+<h3>What Are Gothic Fonts?</h3>
+<p>Gothic fonts (also called <strong>blackletter</strong> or <strong>Old English</strong> fonts) are a style of calligraphy from medieval Europe. They have thick strokes, sharp angles, and a dramatic look. Think of old manuscripts, metal band logos, or fantasy game titles. Our generator converts your regular text into these gothic Unicode characters instantly.</p>
+
+<h3>Where to Use Gothic Text</h3>
+<ul>
+  <li><strong>Gaming names</strong> — PUBG, Free Fire, COD, and Fortnite profiles look amazing in gothic</li>
+  <li><strong>Instagram bio</strong> — Stand out with a dark aesthetic bio</li>
+  <li><strong>Discord</strong> — Gothic usernames are popular in gaming servers</li>
+  <li><strong>WhatsApp status</strong> — Add mystery to your profile</li>
+</ul>`,
+        faqItems: [
+            { question: 'What is a gothic font generator?', answer: 'A gothic font generator converts your regular text into blackletter (Old English) style Unicode characters. These look like medieval calligraphy and work on all devices and platforms without installing any fonts.' },
+            { question: 'Do gothic fonts work in games?', answer: 'Yes! Gothic fonts use Unicode characters that work in PUBG, Free Fire, BGMI, and most mobile games. They are especially popular for dark and mysterious gaming names.' },
+        ],
     },
     {
         slug: 'cursive',
@@ -31,6 +49,22 @@ export const tools: ToolPage[] = [
         metaDescription: 'Create beautiful cursive and script fonts. Elegant handwriting-style text for Instagram, WhatsApp, and social media bios. Free copy and paste!',
         heroText: 'Add elegance to your text with beautiful cursive fonts. Handwriting-style scripts that look stunning anywhere.',
         charMapCategory: 'fancy',
+        seoContent: `<p>Our <strong>cursive font generator</strong> turns your text into beautiful handwriting-style fonts. Cursive text looks elegant, personal, and eye-catching. It is the most popular font style for <strong>Instagram bios</strong>, <strong>WhatsApp profiles</strong>, and anywhere you want a classy look. No app download needed — just type, copy, and paste.</p>
+
+<h3>Types of Cursive Fonts</h3>
+<ul>
+  <li><strong>Script cursive</strong> — Flowing, connected letters like real handwriting</li>
+  <li><strong>Bold cursive</strong> — Thicker strokes for a stronger look</li>
+  <li><strong>Italic cursive</strong> — Slightly tilted for an artistic feel</li>
+  <li><strong>Decorative cursive</strong> — With additional flourishes and symbols</li>
+</ul>
+
+<h3>Why Cursive Fonts Are Popular</h3>
+<p>Cursive is the go-to font for people who want their profile to look <strong>aesthetic</strong> and <strong>elegant</strong>. It works perfectly on Instagram display names, TikTok bios, and WhatsApp status. Cursive fonts make even a simple name look like art. Our generator creates multiple cursive styles so you can pick the one that fits your personality.</p>`,
+        faqItems: [
+            { question: 'How do I type in cursive font?', answer: 'You cannot type in cursive directly. Use our cursive font generator: type your text, and we convert it to cursive Unicode characters. Then copy and paste it anywhere.' },
+            { question: 'Do cursive fonts work on Instagram?', answer: 'Yes! Cursive fonts use Unicode characters that Instagram fully supports. They work in your bio, display name, captions, and comments.' },
+        ],
     },
     {
         slug: 'bubble',
