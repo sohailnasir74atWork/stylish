@@ -53,7 +53,7 @@ export default function FavoritesPage() {
                                         onClick={() => setActiveCollection(col)}
                                         className={`px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${activeCollection === col
                                                 ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-pink-500/25'
-                                                : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
+                                                : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 hover:text-white border border-black/8 dark:border-white/10'
                                             }`}
                                     >
                                         {col} ({getFavoritesByCollection(col).length})
@@ -79,7 +79,7 @@ export default function FavoritesPage() {
                                 return (
                                     <div
                                         key={fav.id}
-                                        className="group bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/10 cursor-pointer card-entrance"
+                                        className="group bg-black/5 dark:bg-white/5 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 rounded-2xl border border-black/8 dark:border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/10 cursor-pointer card-entrance"
                                         onClick={() => copy(fav.text, fav.id)}
                                     >
                                         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-pink-500/30 to-transparent" />
@@ -114,7 +114,7 @@ export default function FavoritesPage() {
                                                 </span>
                                                 <span className={`text-xs font-semibold px-3 py-1 rounded-lg transition-all ${isCopied
                                                         ? 'bg-green-500/20 text-green-400'
-                                                        : 'bg-white/5 text-gray-500 group-hover:bg-purple-500/20 group-hover:text-purple-300'
+                                                        : 'bg-black/5 dark:bg-white/5 text-gray-500 group-hover:bg-purple-500/20 group-hover:text-purple-300'
                                                     }`}>
                                                     {isCopied ? '✓ Copied!' : '📋 Copy'}
                                                 </span>

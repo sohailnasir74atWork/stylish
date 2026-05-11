@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { buildAlternateLanguages } from '@/lib/i18n';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: `Terms of Service | ${SITE_NAME}`,
     description: `Terms of Service for ${SITE_NAME}. Read our terms and conditions for using our stylish name generator.`,
+    alternates: {
+        canonical: '/terms',
+        languages: buildAlternateLanguages('/terms'),
+    },
 };
 
 export default function TermsPage() {
@@ -19,7 +23,7 @@ export default function TermsPage() {
                 </h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: February 25, 2026</p>
 
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 sm:p-8 space-y-6 text-gray-300 leading-relaxed">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 text-gray-300 leading-relaxed">
                     <section>
                         <h2 className="text-xl font-bold text-white mb-3">1. Acceptance of Terms</h2>
                         <p>By accessing and using {SITE_NAME} ({SITE_URL}), you agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>

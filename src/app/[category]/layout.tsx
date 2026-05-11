@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import { categories, platforms, Category, Platform } from '@/lib/categories';
 import { SITE_URL } from '@/lib/constants';
 import { getLocaleDictionary } from '@/lib/getLocale';
-import { locales, defaultLocale } from '@/lib/i18n';
-
-export const dynamic = 'force-dynamic';
+import { buildAlternateLanguages } from '@/lib/i18n';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface Props {
     params: Promise<{ category: string }>;
@@ -15,39 +14,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const cat = categories.find(c => c.slug === slug);
     const plat = platforms.find(p => p.slug === slug);
     const info: Category | Platform | undefined = cat || plat;
-    const { dictionary: t } = await getLocaleDictionary();
+    const { locale, dictionary: t } = await getLocaleDictionary();
 
     if (!info) {
         return { title: 'Not Found' };
     }
 
     const pageUrl = `${SITE_URL}/${slug}`;
+    const ui = getTranslatedUI(locale, slug);
+    const metaTitle = ui?.name || info.metaTitle;
+    const metaDesc = ui?.heroText || info.metaDescription;
 
-    // Build alternates for all locales
-    const languages: Record<string, string> = {};
-    locales.forEach(loc => {
-        languages[loc] = loc === defaultLocale ? `${SITE_URL}/${slug}` : `${SITE_URL}/${loc}/${slug}`;
-    });
-    languages['x-default'] = `${SITE_URL}/${slug}`;
+    const languages = buildAlternateLanguages(`/${slug}`);
 
     return {
-        title: `${info.metaTitle} | ${t.siteName}`,
-        description: info.metaDescription,
+        title: metaTitle,
+        description: metaDesc,
         alternates: {
             canonical: `/${slug}`,
             languages,
         },
         openGraph: {
-            title: `${info.metaTitle} | ${t.siteName}`,
-            description: info.metaDescription,
+            title: metaTitle,
+            description: metaDesc,
             url: pageUrl,
             type: 'website',
-            images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: `${info.metaTitle}` }],
+            images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: metaTitle }],
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${info.metaTitle} | ${t.siteName}`,
-            description: info.metaDescription,
+            title: metaTitle,
+            description: metaDesc,
             images: [`${SITE_URL}/og-image.png`],
         },
     };
@@ -65,14 +62,16 @@ export default async function CategoryLayout({ children, params }: { children: R
     const cat = categories.find(c => c.slug === slug);
     const plat = platforms.find(p => p.slug === slug);
     const info = cat || plat;
-    const { dictionary: t } = await getLocaleDictionary();
+    const { locale, dictionary: t } = await getLocaleDictionary();
+    const ui = info ? getTranslatedUI(locale, info.slug) : undefined;
+    const displayName = ui?.name || info?.name || slug;
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: t.siteName, item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: info?.name || slug, item: `${SITE_URL}/${slug}` },
+            { '@type': 'ListItem', position: 2, name: displayName, item: `${SITE_URL}/${slug}` },
         ],
     };
 

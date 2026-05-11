@@ -6,6 +6,10 @@ import { decorators } from '@/lib/decorators';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { useFavorites } from '@/hooks/useFavorites';
 import { DEFAULT_INPUT } from '@/lib/constants';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 function applyCharMap(text: string, mapId: string): string {
     const cm = charMaps.find(m => m.id === mapId);
@@ -14,6 +18,8 @@ function applyCharMap(text: string, mapId: string): string {
 }
 
 export default function StyleBuilderPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'style-builder');
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
     const [selectedFont, setSelectedFont] = useState(charMaps[0]?.id || '');
     const [selectedLeftDec, setSelectedLeftDec] = useState('');
@@ -56,17 +62,17 @@ export default function StyleBuilderPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        🎨 Style Builder
+                        🎨 {toolUI?.name || 'Style Builder'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     Build your perfect stylish name by combining fonts, decorators, and symbols.
                 </p>
             </section>
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
                 {/* Live Preview Card */}
-                <div className="mb-8 p-6 sm:p-8 bg-white/5 rounded-2xl border border-white/10 text-center">
+                <div className="mb-8 p-6 sm:p-8 bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 text-center">
                     <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-3">Live Preview</p>
                     <p className="text-2xl sm:text-4xl text-white break-all leading-relaxed font-medium" dir="auto">
                         {styledText}
@@ -88,7 +94,7 @@ export default function StyleBuilderPage() {
                             }}
                             className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${favorited
                                     ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30'
-                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                                    : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10'
                                 }`}
                         >
                             {favorited ? '♥ Saved' : '♡ Save'}
@@ -98,13 +104,13 @@ export default function StyleBuilderPage() {
 
                 {/* Input */}
                 <div className="mb-8">
-                    <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
+                    <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
                     <input
                         type="text"
                         value={inputText}
                         onChange={e => setInputText(e.target.value)}
                         maxLength={30}
-                        className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/25 transition-all"
+                        className="w-full px-5 py-3.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/25 transition-all"
                         placeholder="Enter your name..."
                     />
                 </div>
@@ -120,7 +126,7 @@ export default function StyleBuilderPage() {
                                 onClick={() => setActiveFontCat(cat)}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${activeFontCat === cat
                                         ? 'bg-purple-600 text-white'
-                                        : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                                        : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                     }`}
                             >
                                 {cat}
@@ -137,7 +143,7 @@ export default function StyleBuilderPage() {
                                     onClick={() => setSelectedFont(cm.id)}
                                     className={`p-3 rounded-xl text-left transition-all duration-200 border ${isSelected
                                             ? 'bg-purple-600/20 border-purple-500/50 shadow-lg shadow-purple-500/10'
-                                            : 'bg-white/[0.03] border-white/10 hover:bg-white/8 hover:border-white/20'
+                                            : 'bg-white/[0.03] border-black/8 dark:border-white/10 hover:bg-white/8 hover:border-black/15 dark:border-white/20'
                                         }`}
                                 >
                                     <p className="text-base text-white truncate">{preview}</p>
@@ -156,7 +162,7 @@ export default function StyleBuilderPage() {
                             onClick={() => { setSelectedLeftDec(''); setSelectedRightDec(''); }}
                             className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${!selectedLeftDec && !selectedRightDec
                                     ? 'bg-pink-600 text-white'
-                                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                                    : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                 }`}
                         >
                             None
@@ -167,7 +173,7 @@ export default function StyleBuilderPage() {
                                 onClick={() => setActiveDecCat(cat)}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${activeDecCat === cat && (selectedLeftDec || selectedRightDec)
                                         ? 'bg-pink-600 text-white'
-                                        : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                                        : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                     }`}
                             >
                                 {cat}
@@ -186,7 +192,7 @@ export default function StyleBuilderPage() {
                                     }}
                                     className={`p-3 rounded-xl text-center transition-all duration-200 border ${isSelected
                                             ? 'bg-pink-600/20 border-pink-500/50 shadow-lg shadow-pink-500/10'
-                                            : 'bg-white/[0.03] border-white/10 hover:bg-white/8 hover:border-white/20'
+                                            : 'bg-white/[0.03] border-black/8 dark:border-white/10 hover:bg-white/8 hover:border-black/15 dark:border-white/20'
                                         }`}
                                 >
                                     <p className="text-base text-white truncate">{dec.prefix} ✦ {dec.suffix}</p>
@@ -197,6 +203,15 @@ export default function StyleBuilderPage() {
                     </div>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'style-builder');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

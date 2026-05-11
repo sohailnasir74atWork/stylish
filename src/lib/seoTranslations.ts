@@ -303,6 +303,8 @@ const translations: SEOTranslations = {
     },
 };
 
+import { getToolTranslatedSEO } from './toolSeoTranslations';
+
 export function getTranslatedSEO(locale: Locale, slug: string): TranslatedSEO | undefined {
-    return translations[locale]?.[slug];
+    return translations[locale]?.[slug] || getToolTranslatedSEO(locale, slug);
 }

@@ -47,12 +47,11 @@ export default function TextInput({ onTextChange, defaultValue, placeholder, val
                                 placeholder={placeholder || `Type your name... (e.g., ${DEFAULT_INPUT})`}
                                 className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-transparent text-white text-base sm:text-lg placeholder-gray-500 focus:outline-none rounded-xl"
                                 maxLength={MAX_INPUT_LENGTH}
-                                autoFocus
                             />
                             {text && (
                                 <button
                                     onClick={handleClear}
-                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-all"
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-gray-500 hover:text-white hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 transition-all"
                                     aria-label="Clear"
                                 >
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

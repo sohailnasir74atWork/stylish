@@ -3,8 +3,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { trendingCategories } from '@/lib/trendingNames';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 export default function NameIdeasPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'name-ideas');
     const [activeCat, setActiveCat] = useState('gaming');
     const activeCatData = trendingCategories.find(c => c.id === activeCat);
 
@@ -14,10 +20,10 @@ export default function NameIdeasPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">
-                        🔥 Top Profile Name Ideas
+                        {toolUI?.name || '🔥 Top Profile Name Ideas'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     200+ trending name ideas for gaming, social media & more. Click any name to generate 1000+ stylish versions!
                 </p>
             </section>
@@ -30,8 +36,8 @@ export default function NameIdeasPage() {
                             key={cat.id}
                             onClick={() => setActiveCat(cat.id)}
                             className={`shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all border ${activeCat === cat.id
-                                ? 'bg-orange-500/20 text-orange-400 border-orange-500/30 shadow-lg shadow-orange-500/10'
-                                : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10 hover:text-white'
+                                ? 'bg-orange-500 text-white border-orange-500 shadow-lg shadow-orange-500/10'
+                                : 'bg-black/5 dark:bg-white/5 text-gray-600 dark:text-gray-400 border-black/8 dark:border-white/10 hover:bg-orange-500/10 hover:border-orange-500/30'
                                 }`}
                         >
                             {cat.emoji} {cat.label}
@@ -42,7 +48,7 @@ export default function NameIdeasPage() {
                 {/* Active category header */}
                 {activeCatData && (
                     <div className="mb-6">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">
                             {activeCatData.emoji} {activeCatData.label} Names
                         </h2>
                         <p className="text-xs text-gray-500">
@@ -59,7 +65,7 @@ export default function NameIdeasPage() {
                             href={`/?name=${encodeURIComponent(name)}`}
                             className="group p-4 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-pink-500/10 hover:border-purple-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/5 text-center"
                         >
-                            <p className="text-white font-medium text-sm group-hover:text-purple-300 transition-colors">
+                            <p className="text-gray-900 dark:text-white font-medium text-sm group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                                 {name}
                             </p>
                             <p className="text-[10px] text-gray-600 mt-1 group-hover:text-purple-400/60">
@@ -71,7 +77,7 @@ export default function NameIdeasPage() {
 
                 {/* All Categories Quick Access */}
                 <div className="mt-12">
-                    <h3 className="text-lg font-bold text-white mb-4">📂 All Categories</h3>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">📂 All Categories</h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                         {trendingCategories.map(cat => (
                             <button
@@ -83,13 +89,22 @@ export default function NameIdeasPage() {
                                     }`}
                             >
                                 <span className="text-2xl block mb-1">{cat.emoji}</span>
-                                <span className="text-sm text-white font-medium block">{cat.label}</span>
+                                <span className="text-sm text-gray-900 dark:text-white font-medium block">{cat.label}</span>
                                 <span className="text-[10px] text-gray-500">{cat.names.length} names</span>
                             </button>
                         ))}
                     </div>
                 </div>
             </div>
+
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'name-ideas');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

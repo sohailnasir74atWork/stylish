@@ -1,27 +1,51 @@
 @import "tailwindcss";
 
-:root {
-  --bg-primary: #06061a;
-  --bg-secondary: #0a0a2e;
-  --accent-purple: #8b5cf6;
-  --accent-pink: #ec4899;
-  --accent-blue: #3b82f6;
-}
+/* Tailwind v4 class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Base styles */
-body {
+/* =============================================
+   DARK MODE — default (most components use dark colors)
+   ============================================= */
+html.dark body {
   background:
     radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #0f0a1a 100%);
+    linear-gradient(135deg, #06061a 0%, #0a0a2e 50%, #0f0a1a 100%);
   background-attachment: fixed;
   color: #e5e7eb;
+}
+
+/* =============================================
+   LIGHT MODE
+   ============================================= */
+html.light body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #f5f3ff 0%, #ede9fe 40%, #f0eeff 100%);
+  background-attachment: fixed;
+  color: #1e1b4b;
+}
+
+/* =============================================
+   SHARED — Base styles
+   ============================================= */
+body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
 }
 
-/* Scrollbar styling */
+/* P7: Disable fixed background on mobile — causes scroll jank on iOS/Android */
+@media (max-width: 768px) {
+
+  html.dark body,
+  html.light body {
+    background-attachment: scroll;
+  }
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -40,7 +64,6 @@ body {
   background: rgba(139, 92, 246, 0.5);
 }
 
-/* Hide scrollbar for category tabs */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -50,7 +73,7 @@ body {
   display: none;
 }
 
-/* Glow animation for input */
+/* Animations */
 @keyframes glow {
 
   0%,
@@ -67,7 +90,6 @@ body {
   animation: glow 3s ease-in-out infinite;
 }
 
-/* Floating animation */
 @keyframes float {
 
   0%,
@@ -84,9 +106,6 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-/* ===== CARD ANIMATIONS ===== */
-
-/* Card entrance — staggered fade-in + slide-up */
 @keyframes cardEntrance {
   from {
     opacity: 0;
@@ -103,7 +122,6 @@ body {
   animation: cardEntrance 0.4s ease-out both;
 }
 
-/* Shimmer effect for hover borders */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -119,7 +137,6 @@ body {
   animation: shimmer 3s linear infinite;
 }
 
-/* Pulse on copy */
 @keyframes copyPulse {
   0% {
     transform: scale(1);
@@ -138,37 +155,407 @@ body {
   animation: copyPulse 0.3s ease-out;
 }
 
-/* ===== SELECTION ===== */
 ::selection {
   background: rgba(139, 92, 246, 0.4);
   color: white;
 }
 
-/* ===== PROSE OVERRIDES ===== */
+/* Prose */
 .prose h2 {
-  color: white;
   font-size: 1.25rem;
   margin-top: 1.5rem;
 }
 
 .prose h3 {
-  color: #d1d5db;
   font-size: 1.1rem;
 }
 
-.prose p {
-  color: #9ca3af;
-}
-
 .prose a {
-  color: #a78bfa;
   text-decoration: underline;
 }
 
-.prose ul {
+html.dark .prose h2 {
+  color: #e5e7eb;
+}
+
+html.dark .prose h3 {
+  color: #d1d5db;
+}
+
+html.dark .prose p {
   color: #9ca3af;
 }
 
-.prose strong {
+html.dark .prose a {
+  color: #a78bfa;
+}
+
+html.dark .prose ul {
+  color: #9ca3af;
+}
+
+html.dark .prose strong {
   color: white;
+}
+
+html.light .prose h2 {
+  color: #1e1b4b;
+}
+
+html.light .prose h3 {
+  color: #312e81;
+}
+
+html.light .prose p {
+  color: #4b5563;
+}
+
+html.light .prose a {
+  color: #7c3aed;
+}
+
+html.light .prose ul {
+  color: #4b5563;
+}
+
+html.light .prose strong {
+  color: #111827;
+}
+
+
+/* =============================================
+   LIGHT MODE — OVERRIDES
+   Clean, targeted rules for dark-first components
+   ============================================= */
+
+html.light {
+
+  /* ── 1. CUSTOM RGBA BACKGROUNDS ── */
+  /* Header */
+  & [class*="bg-[rgba(10,10,30"] {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Dropdown menus */
+  & [class*="bg-[rgba(20,20,50"] {
+    background: #ffffff !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Main input area */
+  & [class*="bg-[rgba(15,15,40"] {
+    background: #ffffff !important;
+    border: 2px solid rgba(124, 58, 237, 0.18) !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08) !important;
+  }
+
+  /* Footer + body sections */
+  & [class*="bg-[rgba(5,5,20"],
+  & [class*="bg-[#050510]"],
+  & [class*="bg-[#0a0a2e]"] {
+    background: #f5f3ff !important;
+  }
+
+  /* ── 2. TEXT COLORS ── */
+  /* Default: white text → dark text */
+  & .text-white {
+    color: #1e1b4b !important;
+  }
+
+  /* EXCEPTION: Keep white text ON gradient/colored backgrounds + buttons */
+  /* Elements containing .text-white children */
+  & [class*="from-"]>.text-white,
+  & [class*="from-"] .text-white,
+  & [class*="bg-gradient"]>.text-white,
+  & [class*="bg-gradient"] .text-white,
+  & [class*="bg-gradient"]>span,
+  & button[class*="from-"],
+  & button[class*="bg-gradient"],
+  & [class*="bg-purple-5"] .text-white,
+  & [class*="bg-purple-6"] .text-white,
+  & [class*="bg-pink-5"] .text-white,
+  & [class*="bg-pink-6"] .text-white,
+  & [class*="bg-green-5"] .text-white,
+  & [class*="bg-blue-6"] .text-white,
+  /* Elements that ARE the colored bg AND have text-white (selected chips) */
+  & .text-white[class*="from-"],
+  & .text-white[class*="bg-gradient"],
+  & .text-white[class*="bg-purple-6"],
+  & .text-white[class*="bg-pink-6"],
+  & .text-white[class*="bg-green-5"],
+  & .text-white[class*="bg-blue-6"],
+  & .text-white[class*="bg-purple-5"],
+  & .text-white[class*="bg-pink-5"] {
+    color: #ffffff !important;
+  }
+
+  /* Gray text — shift darker */
+  & .text-gray-100 {
+    color: #111827 !important;
+  }
+
+  & .text-gray-200 {
+    color: #1f2937 !important;
+  }
+
+  & .text-gray-300 {
+    color: #374151 !important;
+  }
+
+  & .text-gray-400 {
+    color: #4b5563 !important;
+  }
+
+  & .text-gray-500 {
+    color: #6b7280 !important;
+  }
+
+  /* Keep gradient text working */
+  & .text-transparent {
+    color: transparent !important;
+  }
+
+  /* Hover text */
+  & .hover\:text-white:hover {
+    color: #7c3aed !important;
+  }
+
+  & .hover\:text-gray-300:hover {
+    color: #7c3aed !important;
+  }
+
+  /* ── 3. BORDERS ── */
+  & .border-white\/5,
+  & .border-white\/10 {
+    border-color: rgba(124, 58, 237, 0.1) !important;
+  }
+
+  & .border-white\/20 {
+    border-color: rgba(124, 58, 237, 0.15) !important;
+  }
+
+  /* ── 4. SUBTLE BACKGROUNDS ── */
+  & .bg-white\/5 {
+    background: rgba(124, 58, 237, 0.04) !important;
+  }
+
+  & .bg-white\/10 {
+    background: rgba(124, 58, 237, 0.06) !important;
+  }
+
+  & .hover\:bg-white\/10:hover {
+    background: rgba(124, 58, 237, 0.1) !important;
+  }
+
+  & .hover\:bg-white\/5:hover {
+    background: rgba(124, 58, 237, 0.06) !important;
+  }
+
+  /* ── 5. INPUTS ── */
+  & input,
+  & textarea,
+  & select {
+    background: #ffffff !important;
+    color: #1e1b4b !important;
+    border-color: rgba(124, 58, 237, 0.18) !important;
+  }
+
+  & input::placeholder,
+  & textarea::placeholder {
+    color: #a5a3c7 !important;
+  }
+
+  & input:focus,
+  & textarea:focus {
+    border-color: #7c3aed !important;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12) !important;
+  }
+
+  /* ── 6. STYLE NAME CARDS — WHITE BG + DARK TEXT in light mode (skip dark-preview cards) ── */
+  & [data-style-card]:not([data-dark-preview]) {
+
+    /* Card body — white with subtle purple border */
+    &>div {
+      background: #ffffff !important;
+      border-color: rgba(124, 58, 237, 0.15) !important;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.06) !important;
+    }
+
+    /* White text → dark navy */
+    & .text-white {
+      color: #1e1b4b !important;
+    }
+
+    /* Gray text → medium gray */
+    & .text-gray-400,
+    & .text-gray-500,
+    & .text-gray-600 {
+      color: #6b7280 !important;
+    }
+
+    /* Subtle backgrounds → very light purple */
+    & .bg-white\/5,
+    & .bg-white\/10,
+    & [class*="bg-white\\/"] {
+      background: rgba(124, 58, 237, 0.04) !important;
+    }
+
+    & [class*="bg-white\\/\\[0.03\\]"] {
+      background: rgba(124, 58, 237, 0.03) !important;
+    }
+
+    & .border-white\/10 {
+      border-color: rgba(124, 58, 237, 0.1) !important;
+    }
+
+    /* Purple accents — darker for light bg */
+    & .bg-purple-500\/15 {
+      background: rgba(124, 58, 237, 0.1) !important;
+    }
+
+    & .text-purple-400 {
+      color: #7c3aed !important;
+    }
+
+    & .bg-green-500\/20 {
+      background: rgba(22, 163, 74, 0.12) !important;
+    }
+
+    & .text-green-400 {
+      color: #16a34a !important;
+    }
+
+    /* Hover states */
+    & .hover\:bg-white\/10:hover {
+      background: rgba(124, 58, 237, 0.08) !important;
+    }
+
+    & .group-hover\:bg-purple-500\/20 {
+      background: rgba(124, 58, 237, 0.15) !important;
+    }
+
+    & .hover\:border-purple-500\/50:hover {
+      border-color: rgba(124, 58, 237, 0.4) !important;
+    }
+
+    /* Shadows */
+    & .hover\:shadow-purple-500\/10 {
+      --tw-shadow-color: rgba(124, 58, 237, 0.08);
+    }
+
+    /* Remove light-mode rounded shadows on card internals */
+    & .rounded-xl,
+    & .rounded-2xl,
+    & .rounded-lg {
+      box-shadow: none !important;
+    }
+  }
+
+  /* ── 7. PURPLE ACCENT CARDS ── */
+  & [class*="bg-purple-900\\/20"],
+  & [class*="bg-purple-500\\/10"] {
+    background: rgba(124, 58, 237, 0.06) !important;
+    border-color: rgba(124, 58, 237, 0.12) !important;
+  }
+
+  /* ── 8. SHADOWS — soft purple tint ── */
+  & .shadow-lg,
+  & .shadow-xl,
+  & .shadow-2xl {
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.06) !important;
+  }
+
+  /* ── 9. CATEGORY PILLS ── */
+  /* Non-gradient pills get light styling */
+  & .rounded-full:not([class*="from-"]):not([class*="bg-gradient"]) {
+    border-color: rgba(124, 58, 237, 0.12) !important;
+  }
+
+  /* ── 10. SMOOTH TRANSITIONS — targeted, not wildcard ── */
+  & a,
+  & button,
+  & input,
+  & select,
+  & textarea,
+  & [role="button"] {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  & .card-entrance,
+  & .animate-glow,
+  & .animate-float,
+  & .shimmer-border {
+    transition: none;
+  }
+
+  /* ── 11. DARK PREVIEW OVERRIDE ──
+     When a style card has data-dark-preview, re-apply dark styles 
+     so the per-card dark toggle works even when the site is in light mode. 
+     This block is LAST so it wins via cascade order. */
+  & [data-dark-preview] {
+    &>div {
+      background: rgb(15, 15, 35) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow: none !important;
+    }
+
+    & .text-white {
+      color: #ffffff !important;
+    }
+
+    & .text-gray-400,
+    & .text-gray-500,
+    & .text-gray-600 {
+      color: #9ca3af !important;
+    }
+
+    & .bg-white\/5,
+    & .bg-white\/10 {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    & .border-white\/10 {
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    & .bg-purple-500\/15 {
+      background: rgba(168, 85, 247, 0.15) !important;
+    }
+
+    & .text-purple-400 {
+      color: #c084fc !important;
+    }
+
+    & .bg-green-500\/20 {
+      background: rgba(34, 197, 94, 0.2) !important;
+    }
+
+    & .text-green-400 {
+      color: #4ade80 !important;
+    }
+  }
+}
+
+/* =============================================
+   DESKTOP / MOBILE AD VISIBILITY TOGGLE
+   ============================================= */
+.desktopx {
+  display: block;
+}
+
+.mobilex {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopx {
+    display: none;
+  }
+
+  .mobilex {
+    display: block;
+  }
 }

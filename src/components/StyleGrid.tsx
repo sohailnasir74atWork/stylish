@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import StyleCard from './StyleCard';
+import { useLocale } from '@/hooks/useLocale';
 import type { StyledResult } from '@/lib/unicodeEngine';
 
 interface StyleGridProps {
@@ -13,9 +14,16 @@ interface StyleGridProps {
 const ITEMS_PER_PAGE = 60;
 
 export default function StyleGrid({ results, showSearch = true, onCopy }: StyleGridProps) {
+    const { dictionary: t } = useLocale();
     const [searchQuery, setSearchQuery] = useState('');
     const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
+    // Dark mode = dark preview, light mode = light preview (until user overrides)
     const [allLight, setAllLight] = useState(false);
+
+    useEffect(() => {
+        const isLight = document.documentElement.classList.contains('light');
+        setAllLight(isLight);
+    }, []);
 
     const filtered = useMemo(() => {
         if (!searchQuery) return results;
@@ -53,7 +61,7 @@ export default function StyleGrid({ results, showSearch = true, onCopy }: StyleG
                                 placeholder="Search styles..."
                                 value={searchQuery}
                                 onChange={e => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/25 transition-all"
+                                className="w-full pl-10 pr-4 py-2.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/25 transition-all"
                             />
                         </div>
                     )}
@@ -65,7 +73,7 @@ export default function StyleGrid({ results, showSearch = true, onCopy }: StyleG
                         onClick={() => setAllLight(prev => !prev)}
                         className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-300 ${allLight
                             ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                            : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                            : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10'
                             }`}
                     >
                         {allLight ? '☀️ Light Preview' : '🌙 Dark Preview'}
@@ -99,7 +107,7 @@ export default function StyleGrid({ results, showSearch = true, onCopy }: StyleG
                         className="group px-8 py-3.5 bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/40 hover:to-pink-600/40 text-white font-medium rounded-xl border border-purple-500/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-0.5"
                     >
                         <span className="group-hover:scale-105 inline-block transition-transform">
-                            ✨ Load More ({filtered.length - visibleCount} remaining)
+                            {t.loadMore.replace('{count}', String(filtered.length - visibleCount))}
                         </span>
                     </button>
                 </div>

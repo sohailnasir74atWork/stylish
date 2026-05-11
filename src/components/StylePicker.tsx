@@ -73,7 +73,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                     onClick={() => setMode('pick')}
                     className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${mode === 'pick'
                             ? 'bg-purple-600 text-white'
-                            : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                            : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10'
                         }`}
                 >
                     🎨 Pick Style
@@ -82,7 +82,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                     onClick={() => setMode('paste')}
                     className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${mode === 'paste'
                             ? 'bg-purple-600 text-white'
-                            : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                            : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10'
                         }`}
                 >
                     📋 Paste Styled Text
@@ -96,7 +96,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                         type="text"
                         value={pastedText}
                         onChange={e => handlePaste(e.target.value)}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
+                        className="w-full px-4 py-3 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
                         placeholder="Paste your styled text here..."
                         dir="auto"
                     />
@@ -113,7 +113,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                                     onClick={() => setActiveFontCat(cat)}
                                     className={`px-2.5 py-1 rounded-lg text-[10px] font-medium whitespace-nowrap transition-all ${activeFontCat === cat
                                             ? 'bg-purple-600 text-white'
-                                            : 'bg-white/5 text-gray-500 hover:bg-white/10'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-500 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                         }`}
                                 >
                                     {cat}
@@ -147,7 +147,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                         <div className="flex gap-1.5 overflow-x-auto scrollbar-hide mb-2 pb-1">
                             <button
                                 onClick={() => handleDecSelect('')}
-                                className={`px-2.5 py-1 rounded-lg text-[10px] font-medium whitespace-nowrap transition-all ${!selectedDec ? 'bg-pink-600 text-white' : 'bg-white/5 text-gray-500 hover:bg-white/10'
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-medium whitespace-nowrap transition-all ${!selectedDec ? 'bg-pink-600 text-white' : 'bg-black/5 dark:bg-white/5 text-gray-500 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                     }`}
                             >
                                 None
@@ -158,7 +158,7 @@ export default function StylePicker({ inputText, onStyled, styledText, compact =
                                     onClick={() => setActiveDecCat(cat)}
                                     className={`px-2.5 py-1 rounded-lg text-[10px] font-medium whitespace-nowrap transition-all ${activeDecCat === cat && selectedDec
                                             ? 'bg-pink-600 text-white'
-                                            : 'bg-white/5 text-gray-500 hover:bg-white/10'
+                                            : 'bg-black/5 dark:bg-white/5 text-gray-500 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                         }`}
                                 >
                                     {cat}

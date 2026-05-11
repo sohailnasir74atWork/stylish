@@ -1,6 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 // Combining diacritical marks for zalgo effect
 const ZALGO_UP = [
@@ -45,6 +49,8 @@ function generateZalgo(text: string, intensity: number, direction: 'up' | 'mid' 
 }
 
 export default function ZalgoTextPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'zalgo-text');
     const [text, setText] = useState('Creepy Text');
     const [intensity, setIntensity] = useState(0.4);
     const [direction, setDirection] = useState<'up' | 'mid' | 'down' | 'all'>('all');
@@ -72,25 +78,25 @@ export default function ZalgoTextPage() {
                 <p className="text-4xl mb-3">👾</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Zalgo / Glitch Text Generator
+                        {toolUI?.name || 'Zalgo / Glitch Text Generator'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    Create creepy, glitchy, corrupted text with adjustable intensity. Perfect for Discord, memes, horror aesthetics &amp; more!
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    Create creepy, glitchy, corrupted text with adjustable intensity. Perfect for Discord, memes, horror aesthetics & more!
                 </p>
             </section>
 
             <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 space-y-5">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 space-y-5">
                     {/* Input */}
                     <div>
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your text</label>
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your text</label>
                         <input
                             type="text"
                             value={text}
                             onChange={e => setText(e.target.value)}
                             placeholder="Type something..."
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
+                            className="w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
                         />
                     </div>
 
@@ -98,7 +104,7 @@ export default function ZalgoTextPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                             <div className="flex items-center justify-between mb-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-wider">Craziness</label>
+                                <label className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">Craziness</label>
                                 <span className={`text-xs font-semibold ${intensity >= 0.85 ? 'text-red-400' : intensity >= 0.6 ? 'text-orange-400' : intensity >= 0.3 ? 'text-yellow-400' : 'text-green-400'}`}>
                                     {intensityLabel}
                                 </span>
@@ -114,7 +120,7 @@ export default function ZalgoTextPage() {
                             />
                         </div>
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Direction</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Direction</label>
                             <div className="flex flex-wrap gap-1.5">
                                 {[
                                     { id: 'all' as const, label: '↕ All' },
@@ -127,7 +133,7 @@ export default function ZalgoTextPage() {
                                         onClick={() => { setDirection(d.id); setRefreshKey(k => k + 1); }}
                                         className={`px-3 py-1.5 text-xs rounded-full border transition-all ${direction === d.id
                                             ? 'bg-purple-500/20 border-purple-500/40 text-purple-300'
-                                            : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                                            : 'bg-black/5 dark:bg-white/5 border-black/8 dark:border-white/10 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                             }`}
                                     >
                                         {d.label}
@@ -140,7 +146,7 @@ export default function ZalgoTextPage() {
                     {/* Regenerate */}
                     <button
                         onClick={() => setRefreshKey(k => k + 1)}
-                        className="w-full py-2 rounded-xl text-sm font-medium bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 transition-all"
+                        className="w-full py-2 rounded-xl text-sm font-medium bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 text-gray-300 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 transition-all"
                     >
                         🔄 Regenerate
                     </button>
@@ -148,8 +154,8 @@ export default function ZalgoTextPage() {
                     {/* Result */}
                     {result && (
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Result</label>
-                            <div className="bg-black/30 rounded-xl border border-white/10 p-4 min-h-[80px] overflow-hidden">
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Result</label>
+                            <div className="bg-black/30 rounded-xl border border-black/8 dark:border-white/10 p-4 min-h-[80px] overflow-hidden">
                                 <p className="text-lg text-gray-200 break-all leading-loose">{result}</p>
                             </div>
                             <button
@@ -164,6 +170,15 @@ export default function ZalgoTextPage() {
                         </div>
                     )}
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'zalgo-text');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

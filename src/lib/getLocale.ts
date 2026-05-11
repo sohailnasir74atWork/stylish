@@ -1,34 +1,19 @@
-import { cookies, headers } from 'next/headers';
-import { Locale, defaultLocale, isValidLocale } from './i18n';
+import { Locale, defaultLocale } from './i18n';
 import { getDictionary, Dictionary } from './dictionaries';
 
 /**
- * Server-side locale detection.
- * Reads locale from the cookie set by middleware, or from the x-locale header.
- * Falls back to defaultLocale ('en').
+ * Server always renders the default locale (English).
+ *
+ * Locale switching is handled entirely client-side via the LanguageSwitcher
+ * (cookie set on click, dictionary swapped after hydration). This lets every
+ * page render statically — no cookies()/headers() reads, no per-request SSR,
+ * TTFB drops from ~1.3s to ~200ms. Non-English variants are noindex anyway,
+ * so server-side rendering of localized copy provided no SEO value.
  */
 export async function getLocale(): Promise<Locale> {
-    // Try x-locale header first (set by middleware rewrite)
-    const headerStore = await headers();
-    const headerLocale = headerStore.get('x-locale');
-    if (headerLocale && isValidLocale(headerLocale)) {
-        return headerLocale;
-    }
-
-    // Try cookie (set by middleware)
-    const cookieStore = await cookies();
-    const cookieLocale = cookieStore.get('locale')?.value;
-    if (cookieLocale && isValidLocale(cookieLocale)) {
-        return cookieLocale;
-    }
-
     return defaultLocale;
 }
 
-/**
- * Server-side helper to get both locale and dictionary in one call.
- */
 export async function getLocaleDictionary(): Promise<{ locale: Locale; dictionary: Dictionary }> {
-    const locale = await getLocale();
-    return { locale, dictionary: getDictionary(locale) };
+    return { locale: defaultLocale, dictionary: getDictionary(defaultLocale) };
 }

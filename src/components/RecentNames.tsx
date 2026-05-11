@@ -33,7 +33,7 @@ export default function RecentNames() {
                             onClick={() => copy(item.text, id)}
                             className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${isCopied
                                     ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                                    : 'bg-white/5 text-gray-300 border border-white/10 hover:bg-white/10 hover:border-purple-500/30'
+                                    : 'bg-black/5 dark:bg-white/5 text-gray-300 border border-black/8 dark:border-white/10 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 hover:border-purple-500/30'
                                 }`}
                         >
                             <span className="block truncate max-w-[200px]">{item.text}</span>

@@ -2,8 +2,14 @@
 
 import { useState } from 'react';
 import { captionCategories } from '@/lib/captions';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/hooks/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 export default function CaptionsPage() {
+    const { locale, dictionary: t } = useLocale();
+    const toolUI = getTranslatedUI(locale, 'captions');
     const [activeCategory, setActiveCategory] = useState(captionCategories[0].slug);
     const [searchQuery, setSearchQuery] = useState('');
     const [copied, setCopied] = useState<string | null>(null);
@@ -31,11 +37,11 @@ export default function CaptionsPage() {
                 <p className="text-4xl mb-3">💬</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Captions &amp; Status Ideas
+                        {toolUI?.name || 'Captions & Status Ideas'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    165+ ready-to-copy captions for Instagram, WhatsApp status, TikTok, Facebook &amp; more. Organized by mood!
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    165+ ready-to-copy captions for Instagram, WhatsApp status, TikTok, Facebook & more. Organized by mood!
                 </p>
             </section>
 
@@ -46,7 +52,7 @@ export default function CaptionsPage() {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                     placeholder="🔍 Search captions..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
                 />
             </section>
 
@@ -60,7 +66,7 @@ export default function CaptionsPage() {
                                 onClick={() => setActiveCategory(cat.slug)}
                                 className={`px-3 py-1.5 text-xs rounded-full border transition-all ${activeCategory === cat.slug
                                     ? 'bg-purple-500/20 border-purple-500/40 text-purple-300'
-                                    : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                                    : 'bg-black/5 dark:bg-white/5 border-black/8 dark:border-white/10 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                     }`}
                             >
                                 {cat.emoji} {cat.name}
@@ -91,9 +97,9 @@ export default function CaptionsPage() {
                             <div
                                 key={id}
                                 onClick={() => handleCopy(`${caption.text} ${caption.emoji}`, id)}
-                                className={`group cursor-pointer bg-white/5 rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${copied === id
+                                className={`group cursor-pointer bg-black/5 dark:bg-white/5 rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${copied === id
                                     ? 'border-green-500/30 bg-green-500/5'
-                                    : 'border-white/10 hover:border-purple-500/30 hover:bg-white/[0.07]'
+                                    : 'border-black/8 dark:border-white/10 hover:border-purple-500/30 hover:bg-white/[0.07]'
                                     }`}
                             >
                                 <div className="flex items-start justify-between gap-3">
@@ -107,15 +113,24 @@ export default function CaptionsPage() {
                                     </div>
                                     <span className={`shrink-0 text-xs px-3 py-1 rounded-full transition-all ${copied === id
                                         ? 'bg-green-500/20 text-green-300'
-                                        : 'bg-white/5 text-gray-500 group-hover:text-purple-300'
+                                        : 'bg-black/5 dark:bg-white/5 text-gray-500 group-hover:text-purple-300'
                                         }`}>
-                                        {copied === id ? '✓ Copied!' : 'Copy'}
+                                        {copied === id ? t.copiedButton : t.copyButton}
                                     </span>
                                 </div>
                             </div>
                         );
                     })}
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'captions');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

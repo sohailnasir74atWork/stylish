@@ -2,9 +2,8 @@ import { Metadata } from 'next';
 import { tools } from '@/lib/tools';
 import { SITE_URL } from '@/lib/constants';
 import { getLocaleDictionary } from '@/lib/getLocale';
-import { locales, defaultLocale } from '@/lib/i18n';
-
-export const dynamic = 'force-dynamic';
+import { buildAlternateLanguages } from '@/lib/i18n';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -13,39 +12,37 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const tool = tools.find(t => t.slug === slug);
-    const { dictionary: t } = await getLocaleDictionary();
+    const { locale, dictionary: t } = await getLocaleDictionary();
 
     if (!tool) {
         return { title: 'Not Found' };
     }
 
     const pageUrl = `${SITE_URL}/tool/${slug}`;
+    const ui = getTranslatedUI(locale, slug);
+    const metaTitle = ui?.name || tool.metaTitle;
+    const metaDesc = ui?.heroText || tool.metaDescription;
 
-    // Build alternates for all locales
-    const languages: Record<string, string> = {};
-    locales.forEach(loc => {
-        languages[loc] = loc === defaultLocale ? `${SITE_URL}/tool/${slug}` : `${SITE_URL}/${loc}/tool/${slug}`;
-    });
-    languages['x-default'] = `${SITE_URL}/tool/${slug}`;
+    const languages = buildAlternateLanguages(`/tool/${slug}`);
 
     return {
-        title: `${tool.metaTitle} | ${t.siteName}`,
-        description: tool.metaDescription,
+        title: metaTitle,
+        description: metaDesc,
         alternates: {
             canonical: `/tool/${slug}`,
             languages,
         },
         openGraph: {
-            title: `${tool.metaTitle} | ${t.siteName}`,
-            description: tool.metaDescription,
+            title: metaTitle,
+            description: metaDesc,
             url: pageUrl,
             type: 'website',
-            images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: `${tool.metaTitle}` }],
+            images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: metaTitle }],
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${tool.metaTitle} | ${t.siteName}`,
-            description: tool.metaDescription,
+            title: metaTitle,
+            description: metaDesc,
             images: [`${SITE_URL}/og-image.png`],
         },
     };
@@ -58,7 +55,9 @@ export function generateStaticParams() {
 export default async function ToolLayout({ children, params }: { children: React.ReactNode; params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const tool = tools.find(t => t.slug === slug);
-    const { dictionary: t } = await getLocaleDictionary();
+    const { locale, dictionary: t } = await getLocaleDictionary();
+    const ui = tool ? getTranslatedUI(locale, tool.slug) : undefined;
+    const displayName = ui?.name || tool?.name || slug;
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
@@ -66,7 +65,7 @@ export default async function ToolLayout({ children, params }: { children: React
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: t.siteName, item: SITE_URL },
             { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE_URL}/tool` },
-            { '@type': 'ListItem', position: 3, name: tool?.name || slug, item: `${SITE_URL}/tool/${slug}` },
+            { '@type': 'ListItem', position: 3, name: displayName, item: `${SITE_URL}/tool/${slug}` },
         ],
     };
 

@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 const INVISIBLE_CHARS = [
     { id: 'zwsp', name: 'Zero-Width Space', char: '\u200B', desc: 'Most compatible invisible character. Works on PUBG, Free Fire, Instagram, WhatsApp, and most platforms.', unicode: 'U+200B' },
@@ -20,6 +24,8 @@ const USE_CASES = [
 ];
 
 export default function InvisibleTextPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'invisible-text');
     const [copied, setCopied] = useState<string | null>(null);
     const [repeatCount, setRepeatCount] = useState(1);
 
@@ -37,11 +43,11 @@ export default function InvisibleTextPage() {
                 <p className="text-4xl mb-3">🫥</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Invisible Text Generator
+                        {toolUI?.name || 'Invisible Text Generator'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    Generate invisible characters for blank names in PUBG, Free Fire, WhatsApp, Discord &amp; more. Copy empty text instantly!
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    Generate invisible characters for blank names in PUBG, Free Fire, WhatsApp, Discord & more. Copy empty text instantly!
                 </p>
             </section>
 
@@ -50,16 +56,16 @@ export default function InvisibleTextPage() {
                 <div className="flex items-center justify-center gap-4">
                     <label className="text-sm text-gray-400">Repeat count:</label>
                     <div className="flex items-center gap-2">
-                        <button onClick={() => setRepeatCount(Math.max(1, repeatCount - 1))} className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">−</button>
+                        <button onClick={() => setRepeatCount(Math.max(1, repeatCount - 1))} className="w-8 h-8 rounded-lg bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 text-white hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 transition-colors">−</button>
                         <input
                             type="number"
                             min={1}
                             max={100}
                             value={repeatCount}
                             onChange={e => setRepeatCount(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))}
-                            className="w-16 text-center bg-white/5 border border-white/10 rounded-lg text-white py-1.5 text-sm"
+                            className="w-16 text-center bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-lg text-white py-1.5 text-sm"
                         />
-                        <button onClick={() => setRepeatCount(Math.min(100, repeatCount + 1))} className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">+</button>
+                        <button onClick={() => setRepeatCount(Math.min(100, repeatCount + 1))} className="w-8 h-8 rounded-lg bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 text-white hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 transition-colors">+</button>
                     </div>
                 </div>
             </section>
@@ -68,7 +74,7 @@ export default function InvisibleTextPage() {
             <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
                 <div className="space-y-4">
                     {INVISIBLE_CHARS.map(item => (
-                        <div key={item.id} className="bg-white/5 rounded-2xl border border-white/10 p-5 hover:border-purple-500/30 transition-all">
+                        <div key={item.id} className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-5 hover:border-purple-500/30 transition-all">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
@@ -126,6 +132,15 @@ export default function InvisibleTextPage() {
                         </details>
                     ))}
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'invisible-text');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

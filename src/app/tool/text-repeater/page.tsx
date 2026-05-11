@@ -1,8 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 export default function TextRepeaterPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'text-repeater');
     const [text, setText] = useState('');
     const [count, setCount] = useState(10);
     const [separator, setSeparator] = useState('newline');
@@ -39,32 +45,32 @@ export default function TextRepeaterPage() {
                 <p className="text-4xl mb-3">🔄</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Text Repeater
+                        {toolUI?.name || 'Text Repeater'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
                     Repeat any text up to 5000 times. Perfect for WhatsApp, SMS, Discord flooding, emphasis text, and more!
                 </p>
             </section>
 
             <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 space-y-5">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 space-y-5">
                     {/* Input */}
                     <div>
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Text to repeat</label>
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Text to repeat</label>
                         <textarea
                             value={text}
                             onChange={e => setText(e.target.value)}
                             placeholder="I love you ❤️"
                             rows={2}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50 resize-none"
+                            className="w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50 resize-none"
                         />
                     </div>
 
                     {/* Controls */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Repeat count</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Repeat count</label>
                             <div className="flex items-center gap-2">
                                 <input
                                     type="range"
@@ -80,12 +86,12 @@ export default function TextRepeaterPage() {
                                     max={5000}
                                     value={count}
                                     onChange={e => setCount(Math.min(5000, Math.max(1, parseInt(e.target.value) || 1)))}
-                                    className="w-20 text-center bg-white/5 border border-white/10 rounded-lg text-white py-1.5 text-sm"
+                                    className="w-20 text-center bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-lg text-white py-1.5 text-sm"
                                 />
                             </div>
                         </div>
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Separator</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Separator</label>
                             <div className="flex flex-wrap gap-1.5">
                                 {[
                                     { id: 'newline', label: 'New Line' },
@@ -99,7 +105,7 @@ export default function TextRepeaterPage() {
                                         onClick={() => setSeparator(s.id)}
                                         className={`px-2.5 py-1 text-[11px] rounded-full border transition-all ${separator === s.id
                                             ? 'bg-purple-500/20 border-purple-500/40 text-purple-300'
-                                            : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                                            : 'bg-black/5 dark:bg-white/5 border-black/8 dark:border-white/10 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10'
                                             }`}
                                     >
                                         {s.label}
@@ -112,7 +118,7 @@ export default function TextRepeaterPage() {
                                     value={customSep}
                                     onChange={e => setCustomSep(e.target.value)}
                                     placeholder="Enter separator"
-                                    className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
+                                    className="mt-2 w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-lg px-3 py-1.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
                                 />
                             )}
                         </div>
@@ -122,10 +128,10 @@ export default function TextRepeaterPage() {
                     {result && (
                         <div>
                             <div className="flex items-center justify-between mb-2">
-                                <label className="text-xs text-gray-500 uppercase tracking-wider">Result</label>
+                                <label className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">Result</label>
                                 <span className="text-[10px] text-gray-600">{charCount.toLocaleString()} characters</span>
                             </div>
-                            <div className="bg-black/30 rounded-xl border border-white/10 p-4 max-h-48 overflow-y-auto">
+                            <div className="bg-black/30 rounded-xl border border-black/8 dark:border-white/10 p-4 max-h-48 overflow-y-auto">
                                 <pre className="text-sm text-gray-300 whitespace-pre-wrap break-all font-sans">{result.slice(0, 5000)}{result.length > 5000 ? '...' : ''}</pre>
                             </div>
                             <button
@@ -140,6 +146,15 @@ export default function TextRepeaterPage() {
                         </div>
                     )}
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'text-repeater');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

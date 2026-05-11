@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import StylePicker from '@/components/StylePicker';
 import { DEFAULT_INPUT } from '@/lib/constants';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface MockupTemplate {
     id: string;
@@ -24,6 +28,8 @@ const mockups: MockupTemplate[] = [
 ];
 
 export default function LivePreviewPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'live-preview');
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
     const [styledText, setStyledText] = useState(DEFAULT_INPUT);
     const [activeMockup, setActiveMockup] = useState(mockups[0]);
@@ -33,10 +39,10 @@ export default function LivePreviewPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                        📱 Live Preview Mockup
+                        📱 {toolUI?.name || 'Live Preview'} Mockup
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     See how your stylish name looks on real platform interfaces!
                 </p>
             </section>
@@ -46,13 +52,13 @@ export default function LivePreviewPage() {
                     {/* Left: Input + Style Picker */}
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
                             <input
                                 type="text"
                                 value={inputText}
                                 onChange={e => { setInputText(e.target.value); setStyledText(e.target.value); }}
                                 maxLength={30}
-                                className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
+                                className="w-full px-5 py-3.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
                                 placeholder="Enter your name..."
                             />
                         </div>
@@ -74,7 +80,7 @@ export default function LivePreviewPage() {
                                         onClick={() => setActiveMockup(m)}
                                         className={`p-2.5 rounded-xl text-center transition-all border ${activeMockup.id === m.id
                                             ? 'bg-purple-600/20 border-purple-500/50'
-                                            : 'bg-white/[0.03] border-white/10 hover:bg-white/8'
+                                            : 'bg-white/[0.03] border-black/8 dark:border-white/10 hover:bg-white/8'
                                             }`}
                                     >
                                         <span className="text-xl block">{m.emoji}</span>
@@ -129,7 +135,7 @@ export default function LivePreviewPage() {
                                     )}
                                     {activeMockup.id === 'discord' && (
                                         <div>
-                                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
+                                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-black/8 dark:border-white/10">
                                                 <span className="text-lg">#</span>
                                                 <span className={`text-sm font-medium ${activeMockup.secondaryColor}`}>general</span>
                                             </div>
@@ -159,8 +165,8 @@ export default function LivePreviewPage() {
                                                 </div>
                                             </div>
                                             <div className="space-y-2 pt-2">
-                                                <div className="bg-[#005c4b] rounded-lg px-3 py-2 max-w-[80%] ml-auto"><p className="text-sm text-white">Hey! How are you? 👋</p></div>
-                                                <div className="bg-[#202c33] rounded-lg px-3 py-2 max-w-[80%]"><p className="text-sm text-white">I&apos;m great! Check my new name 🔥</p></div>
+                                                <div className="bg-[#005c4b] rounded-lg px-3 py-2 max-w-[80%] ml-auto"><p className="text-sm text-gray-900 dark:text-white">Hey! How are you? 👋</p></div>
+                                                <div className="bg-[#202c33] rounded-lg px-3 py-2 max-w-[80%]"><p className="text-sm text-gray-900 dark:text-white">I&apos;m great! Check my new name 🔥</p></div>
                                             </div>
                                         </div>
                                     )}
@@ -174,7 +180,7 @@ export default function LivePreviewPage() {
                                                 <div className="text-center"><p className={`font-bold ${activeMockup.textColor}`}>45K</p><p className={`text-xs ${activeMockup.secondaryColor}`}>Followers</p></div>
                                                 <div className="text-center"><p className={`font-bold ${activeMockup.textColor}`}>521</p><p className={`text-xs ${activeMockup.secondaryColor}`}>Following</p></div>
                                             </div>
-                                            <button className="mt-4 px-8 py-2 rounded-lg text-sm font-semibold bg-[#fe2c55] text-white">Follow</button>
+                                            <button className="mt-4 px-8 py-2 rounded-lg text-sm font-semibold bg-[#fe2c55] text-gray-900 dark:text-white">Follow</button>
                                         </div>
                                     )}
                                     {activeMockup.id === 'freefire' && (
@@ -195,6 +201,15 @@ export default function LivePreviewPage() {
                     </div>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'live-preview');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

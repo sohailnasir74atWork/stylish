@@ -149,6 +149,33 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+
+      // ===== WordPress media URLs (still indexed in GSC) =====
+      // Old /wp-content/uploads/* image URLs returned 404 after the migration.
+      // Redirecting to homepage recovers indexed equity (Google treats 301 to / as
+      // soft signal but doesn't lose the inbound link weight).
+      {
+        source: '/wp-content/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/wp-includes/:path*',
+        destination: '/',
+        permanent: true,
+      },
+
+      // ===== Old WP category/section URLs that the dynamic [category] route
+      // was soft-404'ing (HTTP 200 with "Not Found" body). Redirecting kills the
+      // soft-404 signal and recovers indexed equity.
+      { source: '/values', destination: '/', permanent: true },
+      { source: '/values/:path*', destination: '/', permanent: true },
+      { source: '/calculator', destination: '/', permanent: true },
+      { source: '/trades', destination: '/', permanent: true },
+      { source: '/news', destination: '/', permanent: true },
+      { source: '/blogs', destination: '/', permanent: true },
+      { source: '/blogs/:path*', destination: '/', permanent: true },
+      { source: '/group-name', destination: '/', permanent: true },
     ];
   },
 };

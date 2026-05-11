@@ -1,6 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 // Upside down character map
 const UPSIDE_DOWN_MAP: Record<string, string> = {
@@ -42,6 +46,8 @@ function mirrorText(text: string): string {
 }
 
 export default function UpsideDownPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'mirror-text');
     const [text, setText] = useState('Hello World');
     const [copied, setCopied] = useState<string | null>(null);
 
@@ -61,32 +67,32 @@ export default function UpsideDownPage() {
                 <p className="text-4xl mb-3">🙃</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Upside Down &amp; Mirror Text
+                        {toolUI?.name || 'Upside Down & Mirror Text'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    Flip your text upside down or mirror it! Fun for WhatsApp, Instagram, Discord messages &amp; more.
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    Flip your text upside down or mirror it! Fun for WhatsApp, Instagram, Discord messages & more.
                 </p>
             </section>
 
             <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 space-y-5">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 space-y-5">
                     {/* Input */}
                     <div>
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your text</label>
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your text</label>
                         <input
                             type="text"
                             value={text}
                             onChange={e => setText(e.target.value)}
                             placeholder="Type something fun..."
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
+                            className="w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50"
                         />
                     </div>
 
                     {/* Upside Down Result */}
                     <div>
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">🙃 Upside Down</label>
-                        <div className="bg-black/30 rounded-xl border border-white/10 p-4">
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">🙃 Upside Down</label>
+                        <div className="bg-black/30 rounded-xl border border-black/8 dark:border-white/10 p-4">
                             <p className="text-lg text-gray-200 break-all">{flipped || '...'}</p>
                         </div>
                         <button
@@ -102,8 +108,8 @@ export default function UpsideDownPage() {
 
                     {/* Mirror Result */}
                     <div>
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">🪞 Mirror Text</label>
-                        <div className="bg-black/30 rounded-xl border border-white/10 p-4">
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">🪞 Mirror Text</label>
+                        <div className="bg-black/30 rounded-xl border border-black/8 dark:border-white/10 p-4">
                             <p className="text-lg text-gray-200 break-all">{mirrored || '...'}</p>
                         </div>
                         <button
@@ -117,6 +123,15 @@ export default function UpsideDownPage() {
                         </button>
                     </div>
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'mirror-text');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

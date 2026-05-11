@@ -3,6 +3,10 @@
 import { useState, useMemo } from 'react';
 import StylePicker from '@/components/StylePicker';
 import { DEFAULT_INPUT } from '@/lib/constants';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface PlatformInfo {
     id: string;
@@ -58,6 +62,8 @@ function checkCompatibility(text: string, platform: PlatformInfo) {
 }
 
 export default function CompatibilityCheckerPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'compatibility-checker');
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
     const [styledText, setStyledText] = useState(DEFAULT_INPUT);
 
@@ -73,10 +79,10 @@ export default function CompatibilityCheckerPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
-                        🧪 Name Compatibility Checker
+                        🧪 Name {toolUI?.name || 'Compatibility Checker'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     Apply any style + decorator, then check if it works on 15 platforms!
                 </p>
             </section>
@@ -86,13 +92,13 @@ export default function CompatibilityCheckerPage() {
                     {/* Left: Input + Style Picker */}
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
                             <input
                                 type="text"
                                 value={inputText}
                                 onChange={e => { setInputText(e.target.value); setStyledText(e.target.value); }}
                                 maxLength={50}
-                                className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-all"
+                                className="w-full px-5 py-3.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-all"
                                 placeholder="Enter your name..."
                             />
                         </div>
@@ -107,7 +113,7 @@ export default function CompatibilityCheckerPage() {
                     {/* Right: Results */}
                     <div className="lg:sticky lg:top-[120px] lg:self-start">
                         {/* Testing text display */}
-                        <div className="mb-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                        <div className="mb-4 p-4 bg-black/5 dark:bg-white/5 rounded-xl border border-black/8 dark:border-white/10">
                             <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Testing this name</p>
                             <p className="text-xl text-white break-all" dir="auto">{styledText}</p>
                             <p className="text-[10px] text-gray-600 mt-1">{styledText.length} characters</p>
@@ -133,7 +139,7 @@ export default function CompatibilityCheckerPage() {
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-3">
-                                            <div className="hidden sm:block w-24 h-2 bg-white/10 rounded-full overflow-hidden">
+                                            <div className="hidden sm:block w-24 h-2 bg-black/5 dark:bg-white/10 rounded-full overflow-hidden">
                                                 <div
                                                     className={`h-full rounded-full transition-all ${r.ok ? 'bg-green-500' : r.score > 30 ? 'bg-yellow-500' : 'bg-red-500'
                                                         }`}
@@ -162,6 +168,15 @@ export default function CompatibilityCheckerPage() {
                     </div>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'compatibility-checker');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

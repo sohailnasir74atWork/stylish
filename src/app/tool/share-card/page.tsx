@@ -3,6 +3,10 @@
 import { useState, useRef, useCallback } from 'react';
 import StylePicker from '@/components/StylePicker';
 import { DEFAULT_INPUT } from '@/lib/constants';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 const gradients = [
     { id: 'purple-pink', name: 'Purple Dream', colors: ['#7c3aed', '#ec4899'] },
@@ -16,6 +20,8 @@ const gradients = [
 ];
 
 export default function ShareCardPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'share-card');
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
     const [styledText, setStyledText] = useState(DEFAULT_INPUT);
     const [selectedGradient, setSelectedGradient] = useState(gradients[0]);
@@ -92,10 +98,10 @@ export default function ShareCardPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                        🖼️ Share Card Generator
+                        🖼️ {toolUI?.name || 'Share Card Generator'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     Create beautiful shareable images of your stylish name. Pick any style or paste from the generator!
                 </p>
             </section>
@@ -105,13 +111,13 @@ export default function ShareCardPage() {
                     {/* Controls */}
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Your Text</label>
                             <input
                                 type="text"
                                 value={inputText}
                                 onChange={e => { setInputText(e.target.value); setStyledText(e.target.value); setTimeout(drawCard, 50); }}
                                 maxLength={30}
-                                className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
+                                className="w-full px-5 py-3.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
                                 placeholder="Enter your name..."
                             />
                         </div>
@@ -124,19 +130,19 @@ export default function ShareCardPage() {
                         />
 
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Subtitle</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Subtitle</label>
                             <input
                                 type="text"
                                 value={subtitle}
                                 onChange={e => { setSubtitle(e.target.value); setTimeout(drawCard, 50); }}
                                 maxLength={40}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
+                                className="w-full px-4 py-3 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
                                 placeholder="Add a subtitle..."
                             />
                         </div>
 
                         <div>
-                            <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Background</label>
+                            <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Background</label>
                             <div className="grid grid-cols-4 gap-2">
                                 {gradients.map(g => (
                                     <button
@@ -154,8 +160,8 @@ export default function ShareCardPage() {
 
                     {/* Preview & Download */}
                     <div className="lg:sticky lg:top-[120px] lg:self-start">
-                        <label className="block text-xs text-gray-500 uppercase tracking-wider mb-2">Preview</label>
-                        <div className="bg-white/5 rounded-2xl border border-white/10 p-4">
+                        <label className="block text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Preview</label>
+                        <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-4">
                             <canvas
                                 ref={canvasRef}
                                 className="w-full rounded-xl"
@@ -171,6 +177,15 @@ export default function ShareCardPage() {
                     </div>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'share-card');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

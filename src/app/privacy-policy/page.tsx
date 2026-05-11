@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { buildAlternateLanguages } from '@/lib/i18n';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: `Privacy Policy | ${SITE_NAME}`,
     description: `Privacy Policy for ${SITE_NAME}. Learn how we handle your data and protect your privacy.`,
+    alternates: {
+        canonical: '/privacy-policy',
+        languages: buildAlternateLanguages('/privacy-policy'),
+    },
 };
 
 export default function PrivacyPolicyPage() {
@@ -19,7 +23,7 @@ export default function PrivacyPolicyPage() {
                 </h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: February 25, 2026</p>
 
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 sm:p-8 space-y-6 text-gray-300 leading-relaxed">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 sm:p-8 space-y-6 text-gray-300 leading-relaxed">
                     <section>
                         <h2 className="text-xl font-bold text-white mb-3">1. Introduction</h2>
                         <p>Welcome to {SITE_NAME} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website at {SITE_URL}.</p>

@@ -3,6 +3,10 @@
 import { useState, useMemo } from 'react';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { DEFAULT_INPUT } from '@/lib/constants';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 // ASCII art font definitions (simplified block letters)
 const ASCII_FONTS: Record<string, Record<string, string[]>> = {
@@ -96,6 +100,8 @@ function generateAsciiArt(text: string, fontName: string): string {
 }
 
 export default function AsciiArtPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'ascii-art');
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
     const [selectedFont, setSelectedFont] = useState('block');
     const { copiedId, copy } = useCopyToClipboard();
@@ -108,10 +114,10 @@ export default function AsciiArtPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                        🔤 ASCII Art Generator
+                        🔤 {toolUI?.name || 'ASCII Art Generator'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     Convert your text into large block-letter ASCII art. Perfect for Discord, comments, and chats!
                 </p>
             </section>
@@ -124,7 +130,7 @@ export default function AsciiArtPage() {
                         value={inputText}
                         onChange={e => setInputText(e.target.value)}
                         maxLength={12}
-                        className="w-full px-5 py-3.5 bg-white/5 border border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-all"
+                        className="w-full px-5 py-3.5 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-lg text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 transition-all"
                         placeholder="Type text (max 12 chars)..."
                     />
                 </div>
@@ -137,7 +143,7 @@ export default function AsciiArtPage() {
                             onClick={() => setSelectedFont(f)}
                             className={`px-5 py-2.5 rounded-xl text-sm font-medium capitalize transition-all ${selectedFont === f
                                     ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/25'
-                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                                    : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 border border-black/8 dark:border-white/10'
                                 }`}
                         >
                             {f}
@@ -146,7 +152,7 @@ export default function AsciiArtPage() {
                 </div>
 
                 {/* Result */}
-                <div className="bg-white/5 rounded-2xl border border-white/10 p-4 sm:p-6 overflow-x-auto">
+                <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-4 sm:p-6 overflow-x-auto">
                     <pre className="text-green-400 text-xs sm:text-sm font-mono leading-tight whitespace-pre">
                         {asciiResult}
                     </pre>
@@ -165,6 +171,15 @@ export default function AsciiArtPage() {
                     </button>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'ascii-art');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

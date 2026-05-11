@@ -46,3 +46,22 @@ export function isRtl(locale: Locale): boolean {
 export function isValidLocale(locale: string): locale is Locale {
     return locales.includes(locale as Locale);
 }
+
+import { SITE_URL } from './constants';
+
+/**
+ * Builds the `alternates.languages` map for a given page path.
+ *
+ * Non-English locales are currently noindex while we revisit the translation strategy
+ * (10 languages produced 18 clicks in 3 months per GSC). Only the English/x-default
+ * hreflang is emitted; no link rel="alternate" tags are advertised for locale variants
+ * that Google should ignore.
+ */
+export function buildAlternateLanguages(path: string): Record<string, string> {
+    const cleanPath = path === '/' ? '' : path;
+    const canonical = `${SITE_URL}${cleanPath || '/'}`;
+    return {
+        en: canonical,
+        'x-default': canonical,
+    };
+}

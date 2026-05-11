@@ -3,6 +3,10 @@
 import { useState, useMemo } from 'react';
 import StylePicker from '@/components/StylePicker';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface BioTemplate {
     id: string;
@@ -68,6 +72,8 @@ const templates: BioTemplate[] = [
 ];
 
 export default function BioGeneratorPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'bio-generator');
     const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
     const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
     // For the "name" field (first field), we use StylePicker
@@ -103,10 +109,10 @@ export default function BioGeneratorPage() {
             <section className="relative py-10 sm:py-14 px-4 text-center">
                 <h1 className="text-3xl sm:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        📝 Bio Template Generator
+                        📝 {toolUI?.name || 'Bio Template Generator'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
                     Create stunning social media bios with any stylish font + decorators. Paste from the generator or pick a style!
                 </p>
             </section>
@@ -122,7 +128,7 @@ export default function BioGeneratorPage() {
                                 onClick={() => setSelectedTemplate(t)}
                                 className={`p-3 rounded-xl text-center transition-all border ${selectedTemplate.id === t.id
                                     ? 'bg-purple-600/20 border-purple-500/50 shadow-lg shadow-purple-500/10'
-                                    : 'bg-white/[0.03] border-white/10 hover:bg-white/8'
+                                    : 'bg-white/[0.03] border-black/8 dark:border-white/10 hover:bg-white/8'
                                     }`}
                             >
                                 <span className="text-2xl block">{t.emoji}</span>
@@ -144,7 +150,7 @@ export default function BioGeneratorPage() {
                                     value={getFieldValue(i)}
                                     onChange={e => updateField(i, e.target.value)}
                                     placeholder={field.placeholder}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
+                                    className="w-full px-4 py-3 bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl text-sm text-white placeholder-gray-600 focus:outline-none focus:border-purple-500/50 transition-all"
                                 />
                             </div>
                         ))}
@@ -164,10 +170,10 @@ export default function BioGeneratorPage() {
                     {/* Right: Preview */}
                     <div className="lg:sticky lg:top-[120px] lg:self-start">
                         <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-2">Preview</p>
-                        <div className="bg-white/5 rounded-2xl border border-white/10 p-6 min-h-[300px]">
+                        <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 min-h-[300px]">
                             <div className="flex items-center gap-2 mb-4">
                                 <span className="text-xl">{selectedTemplate.emoji}</span>
-                                <span className="text-sm font-medium text-white">{selectedTemplate.name}</span>
+                                <span className="text-sm font-medium text-gray-900 dark:text-white">{selectedTemplate.name}</span>
                             </div>
                             <div className="bg-white/[0.03] rounded-xl p-4">
                                 <pre className="text-white text-sm whitespace-pre-wrap break-all font-sans leading-relaxed" dir="auto">
@@ -189,6 +195,15 @@ export default function BioGeneratorPage() {
                     </div>
                 </div>
             </div>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'bio-generator');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
+            </section>
         </div>
     );
 }

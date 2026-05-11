@@ -2,8 +2,7 @@ import { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
 import { locales, defaultLocale } from '@/lib/i18n';
 import { getLocaleDictionary } from '@/lib/getLocale';
-
-export const dynamic = 'force-dynamic';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 // Build alternates for all locales
 const languages: Record<string, string> = {};
@@ -12,30 +11,39 @@ locales.forEach(loc => {
 });
 languages['x-default'] = `${SITE_URL}/tool/ascii-art`;
 
-export const metadata: Metadata = {
-    title: 'ASCII Art Generator | Block Letter Text Art 🔤',
-    description: 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!',
-    alternates: {
-        canonical: '/tool/ascii-art',
-        languages,
-    },
-    openGraph: {
-        title: 'ASCII Art Generator | Block Letter Text Art 🔤',
-        description: 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!',
-        url: `${SITE_URL}/tool/ascii-art`,
-        type: 'website',
-        images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'ASCII Art' }],
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'ASCII Art Generator | Block Letter Text Art 🔤',
-        description: 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!',
-        images: [`${SITE_URL}/og-image.png`],
-    },
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const { locale, dictionary: t } = await getLocaleDictionary();
+    const ui = getTranslatedUI(locale, 'ascii-art');
+    const metaTitle = ui?.name || 'ASCII Art Generator | Block Letter Text Art 🔤';
+    const metaDesc = ui?.heroText || 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!';
+
+    return {
+        title: metaTitle,
+        description: metaDesc,
+        alternates: {
+            canonical: '/tool/ascii-art',
+            languages,
+        },
+        openGraph: {
+            title: metaTitle,
+            description: metaDesc,
+            url: `${SITE_URL}/tool/ascii-art`,
+            type: 'website',
+            images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: metaTitle }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: metaTitle,
+            description: metaDesc,
+            images: [`${SITE_URL}/og-image.png`],
+        },
+    };
+}
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-    const { dictionary: t } = await getLocaleDictionary();
+    const { locale, dictionary: t } = await getLocaleDictionary();
+    const ui = getTranslatedUI(locale, 'ascii-art');
+    const displayName = ui?.name || 'ASCII Art Generator | Block Letter Text Art 🔤';
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
@@ -43,23 +51,23 @@ export default async function Layout({ children }: { children: React.ReactNode }
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: t.siteName, item: SITE_URL },
             { '@type': 'ListItem', position: 2, name: 'Tools', item: `${SITE_URL}/tool` },
-            { '@type': 'ListItem', position: 3, name: 'ASCII Art', item: `${SITE_URL}/tool/ascii-art` },
+            { '@type': 'ListItem', position: 3, name: displayName, item: `${SITE_URL}/tool/ascii-art` },
         ],
     };
 
     const webPageSchema = {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: 'ASCII Art Generator | Block Letter Text Art 🔤',
-        description: 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!',
+        name: displayName,
+        description: ui?.heroText || 'Convert text into large block-letter ASCII art. Create eye-catching text art for Discord, social media, and comments. Free copy paste!',
         url: `${SITE_URL}/tool/ascii-art`,
         isPartOf: { '@type': 'WebSite', name: t.siteName, url: SITE_URL },
     };
 
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+            <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
             {children}
         </>
     );

@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 import { useRecentNames } from '@/hooks/useRecentNames';
 import { useFavorites } from '@/hooks/useFavorites';
+import { useLocale } from '@/hooks/useLocale';
 import type { StyledResult } from '@/lib/unicodeEngine';
 
 interface StyleCardProps {
@@ -13,10 +14,11 @@ interface StyleCardProps {
     onCopied?: () => void;
 }
 
-export default function StyleCard({ result, index = 0, defaultLight = false, onCopied }: StyleCardProps) {
+function StyleCardInner({ result, index = 0, defaultLight = false, onCopied }: StyleCardProps) {
     const { copiedId, copy } = useCopyToClipboard();
     const { addRecentName } = useRecentNames();
     const { addFavorite, removeFavorite, isFavorited, favorites } = useFavorites();
+    const { dictionary: t } = useLocale();
     const isCopied = copiedId === result.id;
     const favorited = isFavorited(result.text);
     const [isLight, setIsLight] = useState(defaultLight);
@@ -47,19 +49,21 @@ export default function StyleCard({ result, index = 0, defaultLight = false, onC
         }
     };
 
-    // Staggered animation delay based on index
-    const animDelay = Math.min(index * 30, 600);
+    // Cap stagger after the first row so cards past the fold don't queue 1.8s of animation
+    const animDelay = index < 9 ? index * 30 : 270;
 
     return (
         <div
             className="group relative cursor-pointer card-entrance"
             style={{ animationDelay: `${animDelay}ms` }}
             onClick={handleCopy}
+            data-style-card=""
+            data-dark-preview={isLight ? undefined : ""}
         >
             {/* Card body */}
             <div className={`rounded-2xl border transition-all duration-300 overflow-hidden hover:-translate-y-0.5 ${isLight
                 ? 'bg-white border-gray-200 shadow-lg hover:shadow-xl'
-                : 'bg-white/5 hover:bg-white/10 border-white/10 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/10'
+                : 'bg-[rgb(15,15,35)] border-white/10 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/10'
                 }`}>
                 {/* Top accent line */}
                 <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-purple-500/30 to-transparent group-hover:via-purple-500/80 transition-all duration-500" />
@@ -91,10 +95,10 @@ export default function StyleCard({ result, index = 0, defaultLight = false, onC
                             {/* Favorite toggle */}
                             <button
                                 className={`fav-toggle p-1 rounded-md text-sm transition-all duration-200 ${favorited
-                                        ? 'text-pink-500 scale-110'
-                                        : isLight
-                                            ? 'text-gray-300 hover:text-pink-400'
-                                            : 'text-gray-600 hover:text-pink-400'
+                                    ? 'text-pink-500 scale-110'
+                                    : isLight
+                                        ? 'text-gray-300 hover:text-pink-400'
+                                        : 'text-gray-600 hover:text-pink-400'
                                     }`}
                                 onClick={handleFavorite}
                                 title={favorited ? 'Remove from favorites' : 'Add to favorites'}
@@ -128,10 +132,9 @@ export default function StyleCard({ result, index = 0, defaultLight = false, onC
 
                     {/* Bottom action row */}
                     <div className="flex items-center justify-between mt-3">
-                        {/* Click to copy hint */}
                         <span className={`text-[10px] transition-all duration-300 ${isLight ? 'text-gray-400' : 'text-gray-600'
                             } group-hover:${isLight ? 'text-gray-500' : 'text-gray-400'}`}>
-                            Click to copy
+                            {t.clickToCopy}
                         </span>
 
                         {/* Copy button */}
@@ -150,14 +153,14 @@ export default function StyleCard({ result, index = 0, defaultLight = false, onC
                                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                                     </svg>
-                                    Copied!
+                                    {t.copiedButton.replace('✓ ', '')}
                                 </>
                             ) : (
                                 <>
                                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                     </svg>
-                                    Copy
+                                    {t.copyButton}
                                 </>
                             )}
                         </button>
@@ -167,3 +170,14 @@ export default function StyleCard({ result, index = 0, defaultLight = false, onC
         </div>
     );
 }
+
+const StyleCard = memo(StyleCardInner, (prev, next) =>
+    prev.result.id === next.result.id &&
+    prev.result.text === next.result.text &&
+    prev.defaultLight === next.defaultLight &&
+    prev.index === next.index &&
+    prev.onCopied === next.onCopied
+);
+StyleCard.displayName = 'StyleCard';
+
+export default StyleCard;

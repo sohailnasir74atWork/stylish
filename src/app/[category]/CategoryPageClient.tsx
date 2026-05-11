@@ -15,6 +15,7 @@ import ToolCards from '@/components/ToolCards';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
 import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface CategoryPageClientProps {
     slug: string;
@@ -29,6 +30,9 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
     const category = categories.find(c => c.slug === slug);
     const platform = platforms.find(p => p.slug === slug);
     const pageInfo = category || platform;
+    const ui = pageInfo ? getTranslatedUI(locale, pageInfo.slug) : undefined;
+    const displayName = ui?.name || pageInfo?.name || '';
+    const displayHero = ui?.heroText || pageInfo?.heroText || '';
 
     const results = useMemo(() => {
         if (category) {
@@ -57,11 +61,11 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
                 <p className="text-4xl mb-3">{category?.emoji || platform?.emoji}</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        {pageInfo.name} Stylish Name Generator
+                        {displayName} {locale === 'en' ? 'Stylish Name Generator' : t.siteName}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                    {pageInfo.heroText}
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+                    {displayHero}
                 </p>
             </section>
 

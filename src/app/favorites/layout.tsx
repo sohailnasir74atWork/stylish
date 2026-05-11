@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
+import { buildAlternateLanguages } from '@/lib/i18n';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     title: 'My Favorites | Saved Stylish Names Collection 💾',
     description: 'View and manage your saved stylish names collection. Organize your favorite Unicode fonts, symbols, and decorated names. Free copy and paste!',
+    alternates: {
+        canonical: '/favorites',
+        languages: buildAlternateLanguages('/favorites'),
+    },
 };
 
 export default function FavoritesLayout({ children }: { children: React.ReactNode }) {

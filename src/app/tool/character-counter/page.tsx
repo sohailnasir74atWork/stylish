@@ -1,6 +1,10 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import SEOContent from '@/components/SEOContent';
+import { useLocale } from '@/lib/useLocale';
+import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 const PLATFORM_LIMITS = [
     { name: 'Instagram Bio', emoji: '📸', limit: 150, field: 'Bio' },
@@ -30,6 +34,8 @@ const PLATFORM_LIMITS = [
 ];
 
 export default function CharacterCounterPage() {
+    const locale = useLocale();
+    const toolUI = getTranslatedUI(locale, 'character-counter');
     const [text, setText] = useState('');
 
     const stats = useMemo(() => {
@@ -47,11 +53,11 @@ export default function CharacterCounterPage() {
                 <p className="text-4xl mb-3">📏</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        Character Counter
+                        {toolUI?.name || 'Character Counter'}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-                    Count characters, words, and check if your text fits Instagram, TikTok, PUBG, WhatsApp &amp; 20+ platform limits!
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+                    Count characters, words, and check if your text fits Instagram, TikTok, PUBG, WhatsApp & 20+ platform limits!
                 </p>
             </section>
 
@@ -62,7 +68,7 @@ export default function CharacterCounterPage() {
                     onChange={e => setText(e.target.value)}
                     placeholder="Paste or type your text here..."
                     rows={4}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50 resize-none"
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/8 dark:border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-purple-500/50 resize-none"
                 />
             </section>
 
@@ -75,9 +81,9 @@ export default function CharacterCounterPage() {
                         { label: 'Lines', value: stats.lines, emoji: '📄' },
                         { label: 'Sentences', value: stats.sentences, emoji: '💬' },
                     ].map(stat => (
-                        <div key={stat.label} className="bg-white/5 rounded-xl border border-white/10 p-4 text-center">
+                        <div key={stat.label} className="bg-black/5 dark:bg-white/5 rounded-xl border border-black/8 dark:border-white/10 p-4 text-center">
                             <p className="text-xs text-gray-500 mb-1">{stat.emoji} {stat.label}</p>
-                            <p className="text-2xl font-bold text-white">{stat.value.toLocaleString()}</p>
+                            <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value.toLocaleString()}</p>
                         </div>
                     ))}
                 </div>
@@ -92,7 +98,7 @@ export default function CharacterCounterPage() {
                         const isOver = stats.chars > platform.limit;
                         const isFits = stats.chars > 0 && stats.chars <= platform.limit;
                         return (
-                            <div key={platform.name} className={`bg-white/5 rounded-xl border p-3.5 transition-all ${isOver ? 'border-red-500/30' : isFits ? 'border-green-500/30' : 'border-white/10'}`}>
+                            <div key={platform.name} className={`bg-black/5 dark:bg-white/5 rounded-xl border p-3.5 transition-all ${isOver ? 'border-red-500/30' : isFits ? 'border-green-500/30' : 'border-black/8 dark:border-white/10'}`}>
                                 <div className="flex items-center justify-between mb-1.5">
                                     <div className="flex items-center gap-1.5">
                                         <span className="text-sm">{platform.emoji}</span>
@@ -103,7 +109,7 @@ export default function CharacterCounterPage() {
                                         {stats.chars}/{platform.limit}
                                     </span>
                                 </div>
-                                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
                                     <div
                                         className={`h-full rounded-full transition-all duration-500 ${isOver ? 'bg-red-500' : isFits ? 'bg-green-500' : 'bg-gray-700'}`}
                                         style={{ width: `${pct}%` }}
@@ -113,6 +119,15 @@ export default function CharacterCounterPage() {
                         );
                     })}
                 </div>
+            </section>
+        
+            {/* SEO Content - Locale Aware */}
+            <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
+                {(() => {
+                    const seo = getTranslatedSEO(locale, 'character-counter');
+                    if (!seo) return null;
+                    return <SEOContent title="" content={seo.seoContent} faqItems={seo.faqItems} />;
+                })()}
             </section>
         </div>
     );

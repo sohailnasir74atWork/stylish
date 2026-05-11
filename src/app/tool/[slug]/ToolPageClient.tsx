@@ -13,6 +13,7 @@ import ToolCards from '@/components/ToolCards';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
 import { getTranslatedSEO } from '@/lib/seoTranslations';
+import { getTranslatedUI } from '@/lib/uiTranslations';
 
 interface ToolPageClientProps {
     slug: string;
@@ -24,6 +25,9 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
     const [inputText, setInputText] = useState(DEFAULT_INPUT);
 
     const tool = tools.find(t => t.slug === slug);
+    const ui = tool ? getTranslatedUI(locale, tool.slug) : undefined;
+    const displayName = ui?.name || tool?.name || '';
+    const displayHero = ui?.heroText || tool?.heroText || '';
 
     const results = useMemo(() => {
         if (tool) {
@@ -56,11 +60,11 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
                 <p className="text-4xl mb-3">{tool.emoji}</p>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-3">
                     <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                        {tool.name}
+                        {displayName}
                     </span>
                 </h1>
-                <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                    {tool.heroText}
+                <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+                    {displayHero}
                 </p>
             </section>
 
@@ -88,7 +92,7 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
                             href={`/tool/${t.slug}`}
                             className={`px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${t.slug === slug
                                 ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25'
-                                : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
+                                : 'bg-black/5 dark:bg-white/5 text-gray-400 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 hover:text-white border border-black/8 dark:border-white/10'
                                 }`}
                         >
                             {t.emoji} {t.name.replace(' Generator', '')}

@@ -79,9 +79,9 @@ export const categories: Category[] = [
         name: 'Love',
         emoji: '💖',
         description: 'Romantic love and couple names',
-        metaTitle: 'Love Name Generator | Romantic & Couple Name Styles 💖',
-        metaDescription: 'Create romantic stylish names with hearts and love symbols. Perfect for couple names, Valentine\'s Day, and expressing love on social media. Free copy paste!',
-        heroText: 'Express your love with beautiful romantic names. Hearts, flowers, and love symbols to make your special someone smile.',
+        metaTitle: 'Love Stylish Name — Romantic & Couple Names 💖 Copy & Paste',
+        metaDescription: 'Love stylish name maker ✨ Romantic names with hearts 💖, love symbols & couple fonts. Beautiful stylish name for love, lovely girl & couple bio. Free!',
+        heroText: 'Beautiful love stylish names with hearts, romantic symbols & lovely fonts. Perfect for couple bios, Valentine messages and stylish name for love on Instagram.',
         charMapCategory: 'love',
     },
     {
@@ -140,9 +140,9 @@ export const categories: Category[] = [
         name: 'Sad',
         emoji: '😢',
         description: 'Sad and emotional name styles',
-        metaTitle: 'Sad Stylish Name Generator | Emotional & Melancholy Names 😢',
-        metaDescription: 'Create sad and emotional stylish names with tears, broken hearts, and melancholy symbols. Express your feelings beautifully. Free copy paste!',
-        heroText: 'Express your emotions with beautiful sad name styles. Tears, broken hearts, and poetic fonts that capture every feeling.',
+        metaTitle: 'Sad Stylish Name — Emotional & Heart Broken Names 😢',
+        metaDescription: 'Sad stylish name maker ✨ Emotional names with broken heart 💔, tears & melancholy fonts. Heart broken stylish names for WhatsApp, Instagram bio & status. Free!',
+        heroText: 'Express your emotions with sad stylish names — broken hearts 💔, tears, and poetic fonts. Perfect for heart broken status, sad bio and emotional WhatsApp names.',
         charMapCategory: 'sad',
     },
     {
@@ -150,9 +150,9 @@ export const categories: Category[] = [
         name: 'Attitude',
         emoji: '😏',
         description: 'Attitude and swag name styles',
-        metaTitle: 'Attitude Stylish Name Generator | Swag & Boss Names 😏',
-        metaDescription: 'Generate attitude-filled stylish names with swag symbols and confident fonts. Show your personality with boss-level name styles. Free!',
-        heroText: 'Show the world your attitude with confident, swag-filled name styles. Bold fonts and powerful symbols for true bosses.',
+        metaTitle: 'Attitude Stylish Name — Boy Attitude & King Names 😏',
+        metaDescription: 'Attitude stylish name maker ✨ Killer attitude, attitude king & boy attitude names with bold fonts & swag symbols. Free copy & paste for Instagram, TikTok & Free Fire.',
+        heroText: 'Show your attitude with killer attitude names, attitude king styles & boy attitude designs. Bold fonts and powerful symbols for true bosses on Instagram, TikTok & gaming.',
         charMapCategory: 'attitude',
         seoContent: `<p>An <strong>attitude stylish name</strong> tells people who you are without saying a word. Whether you are a gamer, social media user, or just someone who likes to stand out, an attitude name makes you look confident and bold. Our attitude name generator creates powerful names with strong fonts and boss-level symbols.</p>
 
@@ -186,9 +186,9 @@ export const categories: Category[] = [
         name: 'Broken Heart',
         emoji: '💔',
         description: 'Broken heart and heartbreak name styles',
-        metaTitle: 'Broken Heart Name Generator | Heartbreak & Emotional Names 💔',
-        metaDescription: 'Create broken heart stylish names with emotional symbols, tears and heartbreak fonts. Express your pain beautifully. Free copy paste!',
-        heroText: 'Express heartbreak with emotional name styles. Broken hearts, bandages, and bittersweet fonts for when words aren\'t enough.',
+        metaTitle: 'Broken Heart Stylish Name — 💔 Heart Broken Names',
+        metaDescription: 'Broken heart stylish name maker ✨ Heart broken names with 💔, tears & bittersweet fonts. Emotional names for WhatsApp status, Instagram bio & sad profiles. Free!',
+        heroText: 'Heart broken stylish names — 💔, bandages, and emotional fonts for when words aren\'t enough. Perfect for sad status, broken heart bio and Instagram pain posts.',
         charMapCategory: 'sad',
     },
     {
@@ -206,9 +206,9 @@ export const categories: Category[] = [
         name: 'Devil',
         emoji: '😈',
         description: 'Devil and dark name styles',
-        metaTitle: 'Devil Stylish Name Generator | Dark & Demonic Names 😈',
-        metaDescription: 'Generate devil and demonic stylish names with dark symbols and evil fonts. Perfect for gaming and dark profiles. Free copy paste!',
-        heroText: 'Embrace your dark side with devilish name styles. Demonic symbols, dark fonts, and designs from the underworld.',
+        metaTitle: 'Devil Stylish Name — Dark Demonic Names 😈 Free',
+        metaDescription: 'Devil stylish name maker ✨ Dark devil names with demonic symbols (☬ ⛧ ☠) & evil fonts. Perfect for PUBG, Free Fire & dark gaming profiles. Free copy & paste!',
+        heroText: 'Devil stylish names with dark symbols (☬ ⛧ ☠), demonic fonts and underworld designs. Perfect for PUBG, Free Fire and dark Instagram profiles.',
         charMapCategory: 'devil',
     },
     {
@@ -385,9 +385,9 @@ export const categories: Category[] = [
         name: 'Mafia',
         emoji: '🔫',
         description: 'Mafia style names — gangster & boss vibes',
-        metaTitle: 'Mafia Stylish Name Generator | Gangster & Boss Names 🔫',
-        metaDescription: 'Generate mafia-style names with gangster fonts and boss symbols. Don, Godfather, and mob-themed designs for gaming and social media. Free copy paste!',
-        heroText: 'Rule like a Don with mafia-style names. Dark fonts, boss symbols, and gangster designs that command respect.',
+        metaTitle: 'Mafia Stylish Name — Royal Mafia & Killer Names 🔫',
+        metaDescription: 'Mafia stylish name maker ✨ Royal mafia, gangster Don & killer attitude names with boss fonts & dark symbols. Free copy & paste for Free Fire, PUBG & Instagram.',
+        heroText: 'Rule like a Don with royal mafia stylish names. Dark fonts, boss symbols, and killer gangster designs that command respect on Free Fire, PUBG and Instagram.',
         charMapCategory: 'gaming',
     },
     {
@@ -450,9 +450,9 @@ export const platforms: Platform[] = [
         name: 'TikTok',
         emoji: '🎵',
         description: 'Cool names for TikTok profile',
-        metaTitle: 'TikTok Stylish Name Generator | Cool Profile Names 🎵',
-        metaDescription: 'Generate cool and stylish names for your TikTok profile. Unique fonts and symbols that work perfectly. Free copy and paste!',
-        heroText: 'Get the trendiest name styles for your TikTok profile. Cool fonts, unique symbols, and styles that match the TikTok vibe.',
+        metaTitle: 'TikTok Name Style — Stylish TikTok Names 🎵 Copy & Paste',
+        metaDescription: 'TikTok name style maker ✨ Stylish TikTok names with cool fonts, unique symbols & boy attitude styles. Free copy & paste for TikTok display name & bio.',
+        heroText: 'Get the trendiest TikTok name styles — cool fonts, unique symbols, and boy attitude designs. Stylish names that match the TikTok vibe.',
         seoContent: `<p>Your <strong>TikTok name</strong> is your brand. On a platform with millions of creators, a stylish display name helps you stand out and get remembered. Our TikTok name generator creates trendy Unicode fonts that work perfectly on your TikTok profile, bio, and display name.</p>
 
 <h3>TikTok Name Ideas by Niche</h3>
@@ -525,9 +525,9 @@ export const platforms: Platform[] = [
         name: 'Free Fire',
         emoji: '🔥',
         description: 'Stylish names for Free Fire nicknames',
-        metaTitle: 'Free Fire Stylish Name Generator | Cool Nicknames & Symbols 🔥',
-        metaDescription: 'Create stylish Free Fire nicknames with cool symbols and fonts. Generate names that work in-game. Free copy and paste name generator!',
-        heroText: 'Stand out in Free Fire lobbies with the coolest nicknames. Special symbols that work in-game, unique fonts, and pro-level name designs.',
+        metaTitle: 'Free Fire Name Style — FF Stylish Names & Symbols 🔥 (Free)',
+        metaDescription: 'Free Fire name style maker ✨ FF stylish names with cool symbols (꧁ ☬ ⚡), pro fonts & boy attitude nicknames. Free copy & paste — works in-game.',
+        heroText: 'Stand out in Free Fire lobbies with the coolest FF name styles. Special symbols that work in-game (꧁ ☬ ⚡), unique fonts, and pro-level nicknames.',
         seoContent: `<p><strong>Free Fire stylish names</strong> help you stand out in the game lobby. Your name is what other players see in the kill feed, on the leaderboard, and in your squad. A cool name with symbols like ꧁ ⚡ ☬ 🔥 makes you look like a pro player. Our Free Fire name generator creates names that actually work in-game — no broken characters.</p>
 
 <h3>Best Free Fire Name Ideas</h3>
@@ -550,9 +550,9 @@ export const platforms: Platform[] = [
         name: 'PUBG',
         emoji: '🎯',
         description: 'Stylish names for PUBG nicknames',
-        metaTitle: 'PUBG Stylish Name Generator | Cool Nicknames & Symbols 🎯',
-        metaDescription: 'Generate stylish PUBG nicknames with cool symbols and fonts. Create unique gaming names that work in PUBG Mobile. Free copy paste!',
-        heroText: 'Dominate PUBG with a stylish nickname. Special gaming symbols, pro-style fonts, and unique designs to make your mark.',
+        metaTitle: 'PUBG Name Generator — Stylish PUBG Names & Symbols 🎯',
+        metaDescription: 'PUBG name generator ✨ Stylish PUBG nicknames with cool symbols (꧁ ☬ ⚡), pro fonts & boy attitude names. Free copy & paste for PUBG Mobile.',
+        heroText: 'Dominate PUBG with a stylish nickname. Special gaming symbols (꧁ ☬ ⚡), pro-style fonts, and boy attitude designs that make you stand out.',
         seoContent: `<p>A <strong>stylish PUBG name</strong> makes you stand out in every match. Your name appears on the kill feed, leaderboards, and when players spectate you. Pro players and streamers use decorated names with symbols like ꧁ ☬ ★ ⚡ to build their brand. Our PUBG name generator creates hundreds of cool names that work on PUBG Mobile.</p>
 
 <h3>Top PUBG Name Ideas</h3>
@@ -680,9 +680,28 @@ export const platforms: Platform[] = [
         name: 'BGMI',
         emoji: '🎮',
         description: 'Stylish names for BGMI nicknames',
-        metaTitle: 'BGMI Stylish Name Generator | Cool Nicknames & Symbols 🎮',
-        metaDescription: 'Generate stylish BGMI nicknames with cool symbols and fonts. Create unique gaming names that work in BGMI. Free copy paste!',
-        heroText: 'Conquer BGMI with a stylish nickname. Pro-level fonts, battle-ready symbols, and designs that command respect.',
+        metaTitle: 'BGMI Name Generator — Stylish BGMI Names & Symbols 🎮',
+        metaDescription: 'BGMI name generator ✨ Stylish BGMI nicknames with cool symbols (꧁ ☬ ⚡), gaming fonts & keyboard-friendly designs. Free copy & paste for BGMI Mobile.',
+        heroText: 'Conquer BGMI with a stylish nickname. Pro-level fonts, battle-ready symbols (꧁ ☬ ⚡), and keyboard-friendly designs that command respect.',
+        seoContent: `<p><strong>BGMI stylish names</strong> are how you build your in-game identity. A cool nickname with symbols like ꧁ ☬ ⚡ ★ makes you look like a pro on the kill feed, leaderboard, and squad chat. Our BGMI name generator creates hundreds of stylish names that work directly in Battlegrounds Mobile India — copy and paste straight into your profile.</p>
+
+<h3>Best BGMI Name Ideas</h3>
+<ul>
+  <li><strong>Boy attitude names</strong> — Killer King, Death Lord, Battle God, Conqueror</li>
+  <li><strong>Sniper names</strong> — AWM God, Sniper Elite, Headshot Pro, Quick Scope</li>
+  <li><strong>Squad names</strong> — Squad Boss, Pro Player, Elite Forces, Royal Squad</li>
+  <li><strong>Symbol names</strong> — ꧁༒☬KING☬༒꧂, ★彡 LEGEND 彡★, ⚡ STORM ⚡</li>
+</ul>
+
+<h3>BGMI Name Change Rules</h3>
+<p>BGMI gives you <strong>one free rename</strong>. After that, you need a <strong>Rename Card</strong> from the shop or crates (costs 180 UC). BGMI allows up to <strong>14 characters</strong> in your nickname. Some Unicode symbols count as 2 characters, so keep it short. Type your name above, browse the styles, and copy your favorite before using your rename card.</p>
+
+<h3>How to Use Stylish Symbols in BGMI</h3>
+<p>BGMI fully supports Unicode characters including symbols like ꧁ ꧂ ☬ ★ ⚡ ♛ ☠ 卐. Our generator only includes BGMI-compatible symbols — every name shown will work in-game without broken characters. For best results, pair a stylish font with 1–2 decorative symbols around your name.</p>`,
+        faqItems: [
+            { question: 'How to change name in BGMI?', answer: 'Open BGMI > tap your profile > tap your nickname > use a Rename Card > paste your stylish name. You get one free rename. After that, Rename Cards cost 180 UC from the shop.' },
+            { question: 'What symbols work in BGMI names?', answer: 'Most Unicode symbols work in BGMI including ꧁ ꧂ ☬ ★ ⚡ ♛ ☠ 卐. Our generator only uses BGMI-compatible symbols so every name we generate will display correctly in-game.' },
+        ],
     },
 ];
 
