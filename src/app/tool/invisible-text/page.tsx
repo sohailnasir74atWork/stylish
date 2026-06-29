@@ -23,6 +23,13 @@ const USE_CASES = [
     { emoji: '🕹️', title: 'Empty Roblox Username', platforms: 'Roblox · Minecraft · Fortnite', tip: 'Braille Blank works best for gaming platforms.' },
 ];
 
+const FAQS = [
+    { q: 'What is invisible text?', a: 'Invisible text uses special Unicode characters that take up space but have no visible glyph. They appear blank to the eye but are valid characters.' },
+    { q: 'How to get a blank name in PUBG?', a: 'Copy the Zero-Width Space or Braille Blank character from above and paste it as your PUBG username. Some characters work better than others depending on the game version.' },
+    { q: 'Can I send empty messages on WhatsApp?', a: 'Yes! Copy the Braille Blank character (⠀) and paste it in WhatsApp. It will send as a blank message.' },
+    { q: 'Is invisible text the same as spaces?', a: 'No. Regular spaces are often trimmed by platforms. Invisible characters are special Unicode that platforms treat as valid text content.' },
+];
+
 export default function InvisibleTextPage() {
     const locale = useLocale();
     const toolUI = getTranslatedUI(locale, 'invisible-text');
@@ -116,13 +123,23 @@ export default function InvisibleTextPage() {
             {/* FAQ */}
             <section className="px-4 sm:px-6 max-w-3xl mx-auto mb-12">
                 <h2 className="text-xl font-bold text-white mb-6 text-center">❓ FAQ</h2>
+                <script
+                    type="application/ld+json"
+                    suppressHydrationWarning
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'FAQPage',
+                            mainEntity: FAQS.map(faq => ({
+                                '@type': 'Question',
+                                name: faq.q,
+                                acceptedAnswer: { '@type': 'Answer', text: faq.a },
+                            })),
+                        }),
+                    }}
+                />
                 <div className="space-y-3">
-                    {[
-                        { q: 'What is invisible text?', a: 'Invisible text uses special Unicode characters that take up space but have no visible glyph. They appear blank to the eye but are valid characters.' },
-                        { q: 'How to get a blank name in PUBG?', a: 'Copy the Zero-Width Space or Braille Blank character from above and paste it as your PUBG username. Some characters work better than others depending on the game version.' },
-                        { q: 'Can I send empty messages on WhatsApp?', a: 'Yes! Copy the Braille Blank character (⠀) and paste it in WhatsApp. It will send as a blank message.' },
-                        { q: 'Is invisible text the same as spaces?', a: 'No. Regular spaces are often trimmed by platforms. Invisible characters are special Unicode that platforms treat as valid text content.' },
-                    ].map(faq => (
+                    {FAQS.map(faq => (
                         <details key={faq.q} className="group bg-white/[0.03] rounded-xl border border-white/[0.06] p-4">
                             <summary className="text-sm text-white font-medium cursor-pointer list-none flex justify-between items-center">
                                 {faq.q}

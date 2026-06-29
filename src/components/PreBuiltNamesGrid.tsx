@@ -17,7 +17,10 @@ export default function PreBuiltNamesGrid({ slug }: PreBuiltNamesGridProps) {
 
     if (!names || names.length === 0) return null;
 
-    const displayNames = showAll ? names : names.slice(0, 8);
+    // Render ALL names into the DOM (so they're crawlable for SEO); only the
+    // visual height is clamped until the user expands.
+    const PREVIEW_COUNT = 8;
+    const canExpand = names.length > PREVIEW_COUNT;
 
     return (
         <section className="px-4 sm:px-6 max-w-7xl mx-auto mb-10">
@@ -34,8 +37,9 @@ export default function PreBuiltNamesGrid({ slug }: PreBuiltNamesGridProps) {
                         <span className="text-xs text-gray-500">{names.length} {t.prebuiltCountSuffix}</span>
                     </div>
 
+                    <div className={`relative ${canExpand && !showAll ? 'max-h-[360px] overflow-hidden' : ''}`}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        {displayNames.map((n: PreBuiltName, i: number) => {
+                        {names.map((n: PreBuiltName, i: number) => {
                             const id = `prebuilt-${slug}-${i}`;
                             const isCopied = copiedId === id;
                             return (
@@ -63,8 +67,12 @@ export default function PreBuiltNamesGrid({ slug }: PreBuiltNamesGridProps) {
                             );
                         })}
                     </div>
+                        {canExpand && !showAll && (
+                            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[rgba(10,8,20,0.9)] to-transparent" />
+                        )}
+                    </div>
 
-                    {names.length > 8 && !showAll && (
+                    {canExpand && !showAll && (
                         <button
                             onClick={() => setShowAll(true)}
                             className="mt-3 w-full py-2.5 rounded-xl text-xs font-medium text-purple-400 bg-black/5 dark:bg-white/5 hover:bg-black/5 dark:hover:bg-black/5 dark:bg-white/10 transition-all border border-white/5"

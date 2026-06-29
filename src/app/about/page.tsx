@@ -52,7 +52,9 @@ export default function AboutPage() {
                     <div className="bg-black/5 dark:bg-white/5 rounded-2xl border border-black/8 dark:border-white/10 p-6 sm:p-8">
                         <h2 className="text-xl font-bold text-white mb-3">📧 Contact</h2>
                         <p>
-                            Have questions, suggestions, or feedback? We&apos;d love to hear from you! Reach out to us and we&apos;ll get back to you as soon as possible.
+                            Have questions, suggestions, or feedback? We&apos;d love to hear from you. Email us at{' '}
+                            <a href="mailto:stylishnamesgen@gmail.com" className="text-purple-300 hover:text-purple-200 underline">stylishnamesgen@gmail.com</a>{' '}
+                            or visit our <a href="/contact" className="text-purple-300 hover:text-purple-200 underline">Contact page</a> — we usually reply within 1–2 business days.
                         </p>
                     </div>
                 </div>

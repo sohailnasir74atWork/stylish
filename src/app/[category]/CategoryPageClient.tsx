@@ -12,6 +12,7 @@ import { platforms } from '@/lib/categories';
 import { DEFAULT_INPUT } from '@/lib/constants';
 import PreBuiltNamesGrid from '@/components/PreBuiltNamesGrid';
 import ToolCards from '@/components/ToolCards';
+import RelatedLinks from '@/components/RelatedLinks';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
 import { getTranslatedSEO } from '@/lib/seoTranslations';
@@ -143,6 +144,9 @@ export default function CategoryPageClient({ slug, locale, dictionary: t }: Cate
                     );
                 })()}
             </section>
+
+            {/* Internal-link block — related categories, platforms, and tools */}
+            <RelatedLinks currentHref={`/${slug}`} />
         </div>
     );
 }

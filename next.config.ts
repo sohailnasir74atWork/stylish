@@ -172,9 +172,10 @@ const nextConfig: NextConfig = {
       { source: '/values/:path*', destination: '/', permanent: true },
       { source: '/calculator', destination: '/', permanent: true },
       { source: '/trades', destination: '/', permanent: true },
-      { source: '/news', destination: '/', permanent: true },
-      { source: '/blogs', destination: '/', permanent: true },
-      { source: '/blogs/:path*', destination: '/', permanent: true },
+      // /news and /blog are now real content sections (do NOT redirect them).
+      // Old WordPress /blogs URLs → forward their equity to the new /blog hub.
+      { source: '/blogs', destination: '/blog', permanent: true },
+      { source: '/blogs/:path*', destination: '/blog', permanent: true },
       { source: '/group-name', destination: '/', permanent: true },
     ];
   },

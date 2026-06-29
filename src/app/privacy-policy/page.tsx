@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
 
                     <section>
                         <h2 className="text-xl font-bold text-white mb-3">9. Contact Us</h2>
-                        <p>If you have any questions about this Privacy Policy, please contact us through our website.</p>
+                        <p>If you have any questions about this Privacy Policy, please email us at <a href="mailto:stylishnamesgen@gmail.com" className="text-purple-300 hover:text-purple-200 underline">stylishnamesgen@gmail.com</a> or use our <a href="/contact" className="text-purple-300 hover:text-purple-200 underline">Contact page</a>.</p>
                     </section>
                 </div>
             </div>

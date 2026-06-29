@@ -10,6 +10,7 @@ import { tools } from '@/lib/tools';
 import { DEFAULT_INPUT } from '@/lib/constants';
 import Link from 'next/link';
 import ToolCards from '@/components/ToolCards';
+import RelatedLinks from '@/components/RelatedLinks';
 import { Locale } from '@/lib/i18n';
 import { Dictionary } from '@/lib/dictionaries';
 import { getTranslatedSEO } from '@/lib/seoTranslations';
@@ -146,6 +147,9 @@ export default function ToolPageClient({ slug, locale, dictionary: t }: ToolPage
                     );
                 })()}
             </section>
+
+            {/* Internal-link block — related categories, platforms, and tools */}
+            <RelatedLinks currentHref={`/tool/${slug}`} />
         </div>
     );
 }

@@ -11,6 +11,159 @@ export interface TranslatedSEO {
 type SEOTranslations = Partial<Record<Locale, Record<string, TranslatedSEO>>>;
 
 const translations: SEOTranslations = {
+    // ─── ENGLISH (default locale — the only indexed variant) ───
+    // These power the bottom SEO/FAQ block on the dedicated tool pages,
+    // which otherwise rendered nothing in English (getTranslatedSEO returned undefined).
+    en: {
+        strikethrough: {
+            seoContent: `<p>Our <strong>strikethrough text generator</strong> draws a line through your words — <strong>l̶i̶k̶e̶ ̶t̶h̶i̶s̶</strong> — using special Unicode marks, so you can copy and paste crossed-out text into apps that have no strikethrough button, like your Instagram bio, an X (Twitter) post, or a Discord username.</p>
+
+<h3>Strikethrough styles you can make</h3>
+<ul>
+  <li><strong>Single strikethrough</strong> — o̶n̶e̶ ̶l̶i̶n̶e̶ through the text, the classic crossed-out look</li>
+  <li><strong>Double strikethrough</strong> — t̳w̳o̳ lines for stronger emphasis</li>
+  <li><strong>Slash & tilde overlays</strong> — diagonal and wavy variations</li>
+</ul>
+
+<h3>Why use strikethrough text?</h3>
+<p>Crossed-out text is a popular way to show a "before and after", make a joke, cross off a to-do, or display a price that has dropped. Because most social apps have no strikethrough button, this generator adds the line using combining Unicode characters so the effect survives copy and paste.</p>
+
+<h3>Where it works</h3>
+<p>Strikethrough text displays correctly on <strong>Instagram</strong>, <strong>X (Twitter)</strong>, <strong>Facebook</strong>, <strong>WhatsApp</strong>, and <strong>Discord</strong>. A few older apps may show the line slightly offset, but on modern phones and browsers it lines up cleanly.</p>`,
+            faqItems: [
+                { question: "How do I cross out text on Instagram?", answer: "Instagram has no strikethrough button. Type your text in our generator, copy the crossed-out version, and paste it into your bio, caption, or comment — the line stays in place." },
+                { question: "Does strikethrough text work on WhatsApp?", answer: "WhatsApp has its own strikethrough (wrap text in ~tildes~), but our generator also works and lets you paste crossed-out text into the name field and other apps that lack the feature." },
+                { question: "Is the strikethrough text generator free?", answer: "Yes, it is completely free with no sign-up. Generate and copy as much strikethrough text as you like." },
+            ],
+        },
+        'mirror-text': {
+            seoContent: `<p>Our <strong>mirror text generator</strong> flips your words into their reversed, mirror-image form — <strong>ƚxǝƚ ɿoɿɿim</strong> — that reads correctly when held up to a mirror. Copy and paste it for puzzles, secret messages, tattoo previews, or just to make a post that stands out.</p>
+
+<h3>Mirror vs reversed text</h3>
+<p>There are two effects people look for: <strong>mirrored</strong> text uses flipped letterforms so it looks like a true reflection, while <strong>reversed</strong> text simply writes your letters back-to-front in the opposite order. This generator produces both, so you can pick the look you need.</p>
+
+<h3>Fun ways to use it</h3>
+<ul>
+  <li><strong>Secret messages</strong> friends decode with a mirror or their phone camera</li>
+  <li><strong>Tattoo previews</strong> for mirrored or reflection-style lettering</li>
+  <li><strong>Instagram & TikTok</strong> captions and usernames that look unusual</li>
+</ul>
+
+<h3>Good to know</h3>
+<p>Mirror text relies on Unicode characters that resemble flipped letters, so some letters have a closer match than others. For the cleanest result, keep your text to standard letters and short phrases.</p>`,
+            faqItems: [
+                { question: "What is the difference between mirror text and reversed text?", answer: "Mirror text uses flipped letter shapes so it looks like a real reflection. Reversed text keeps normal letters but writes them in the opposite order. Our generator makes both." },
+                { question: "Does mirror text work on Instagram?", answer: "Yes. The mirrored characters are Unicode, so they display in Instagram bios and captions, and on TikTok and X (Twitter). Copy and paste as usual." },
+                { question: "Is the mirror text generator free?", answer: "Yes, free with no sign-up. Mirror and copy as much text as you want." },
+            ],
+        },
+        'zalgo-text': {
+            seoContent: `<p>Our <strong>zalgo text generator</strong> corrupts your words with layers of stacked Unicode marks to create that glitchy, "cursed", dripping look — <strong>Z̸̧̢a̵l̴g̶o̷</strong>. Copy and paste it into Discord, TikTok captions, or anywhere you want text that looks hauntingly broken.</p>
+
+<h3>What is zalgo text?</h3>
+<p>Zalgo text is built from <strong>combining diacritical marks</strong> — accent characters that normally sit above or below a letter. Stack enough of them on each character and the text appears to bleed up, down, and over its neighbors. It comes from the "He comes" internet horror meme and is now a staple of spooky and gaming posts.</p>
+
+<h3>Adjust the level of chaos</h3>
+<ul>
+  <li><strong>Light</strong> — a subtle creepy edge that stays readable</li>
+  <li><strong>Medium</strong> — clearly glitched but still legible</li>
+  <li><strong>Heavy</strong> — fully corrupted, maximum cursed effect</li>
+</ul>
+
+<h3>Compatibility notes</h3>
+<p>Zalgo works in <strong>Discord</strong>, on <strong>X (Twitter)</strong>, and in many chat apps, but some platforms cap how many combining marks they render and will trim very heavy distortion. If a paste looks clipped, use a lighter level. It is best for short names and titles, not long paragraphs.</p>`,
+            faqItems: [
+                { question: "What is zalgo text?", answer: "Zalgo text is glitchy, corrupted-looking text made by stacking combining Unicode marks on top of normal letters, giving that 'cursed' dripping effect popular on Discord and in horror memes." },
+                { question: "Does zalgo text work on Discord?", answer: "Yes. Discord renders combining marks, so zalgo works in messages, usernames, and server names. Extremely heavy distortion may be partially trimmed by some clients." },
+                { question: "Is the zalgo text generator free?", answer: "Yes, completely free with no sign-up. Generate and copy unlimited zalgo text." },
+            ],
+        },
+        'text-repeater': {
+            seoContent: `<p>Our <strong>text repeater</strong> copies a word, phrase, or emoji as many times as you want in one click — no more pasting the same thing over and over. Set the number of repeats, choose whether each copy goes on a new line or all in a row, and copy the whole block instantly.</p>
+
+<h3>What people use a text repeater for</h3>
+<ul>
+  <li><strong>Spamming a word or emoji</strong> in group chats and live streams (for fun)</li>
+  <li><strong>Filling a bio or post</strong> with a repeated pattern</li>
+  <li><strong>Testing</strong> character limits and text wrapping</li>
+  <li><strong>Creating</strong> long separators or repeated symbols</li>
+</ul>
+
+<h3>How it works</h3>
+<p>Type your text, enter how many times to repeat it, and pick a separator — a space, a new line, or nothing at all. The generator builds the full repeated string so you can copy it in one tap and paste it anywhere.</p>
+
+<h3>A note on etiquette</h3>
+<p>Repeated text is great for emphasis and fun, but many chat apps and communities have anti-spam rules. Use it where it is welcome to avoid getting muted or flagged.</p>`,
+            faqItems: [
+                { question: "How do I repeat text many times quickly?", answer: "Type your word or phrase, set the repeat count, choose a separator (space, new line, or none), and the text repeater builds the full block for you to copy in one click." },
+                { question: "Can I repeat emojis too?", answer: "Yes. The text repeater works with emojis, symbols, and any text, so you can quickly create a long run of the same emoji." },
+                { question: "Is the text repeater free?", answer: "Yes, it is free with no sign-up. Repeat and copy as much text as you like." },
+            ],
+        },
+        'ascii-art': {
+            seoContent: `<p>Our <strong>ASCII art generator</strong> turns your text into large letters drawn from keyboard characters, plus ready-made ASCII pictures you can copy and paste. It is perfect for <strong>Discord</strong> messages, gaming chats, code comments, and anywhere you want eye-catching text art.</p>
+
+<h3>Two kinds of ASCII art</h3>
+<ul>
+  <li><strong>ASCII text / figlet letters</strong> — your words spelled out in big block letters built from symbols</li>
+  <li><strong>ASCII pictures</strong> — small ready-made designs like faces, animals, and shapes</li>
+</ul>
+
+<h3>Where ASCII art looks best</h3>
+<p>ASCII art lines up perfectly in apps that use a fixed-width (monospace) font, such as <strong>Discord</strong> code blocks, terminal windows, and code editors. In apps with normal fonts the spacing can shift, so block-letter art is most reliable inside a code block.</p>
+
+<h3>How to use it</h3>
+<p>Type your text or pick a design, copy the result, and paste it where you want it. On Discord, wrapping ASCII art in a code block keeps every character aligned.</p>`,
+            faqItems: [
+                { question: "How do I make ASCII art from text?", answer: "Type your word above and the generator spells it out in large letters made from keyboard characters. Copy it and paste it into Discord, a chat, or a code comment." },
+                { question: "Why does my ASCII art look misaligned?", answer: "ASCII art needs a fixed-width (monospace) font to line up. It looks perfect in Discord code blocks and terminals, but normal-font apps can shift the spacing." },
+                { question: "Is the ASCII art generator free?", answer: "Yes, completely free with no sign-up. Create and copy unlimited ASCII art." },
+            ],
+        },
+        'character-counter': {
+            seoContent: `<p>Our free <strong>character counter</strong> instantly tallies the characters, words, sentences, and paragraphs in your text as you type — so you never go over a platform's limit again. It is built for writers, students, and social media users who need to fit an <strong>X (Twitter) post</strong>, <strong>Instagram caption</strong>, or <strong>meta description</strong> into an exact length.</p>
+
+<h3>What it counts</h3>
+<ul>
+  <li><strong>Characters</strong> — with and without spaces</li>
+  <li><strong>Words and sentences</strong></li>
+  <li><strong>Paragraphs and lines</strong></li>
+</ul>
+
+<h3>Handy limits to remember</h3>
+<p>X (Twitter) posts cap at 280 characters, an Instagram bio at 150, a Threads post at 500, and an SEO meta description reads best under about 160. Paste your text here to see exactly where you stand before you publish.</p>
+
+<h3>Private and instant</h3>
+<p>Everything is counted in your browser as you type — nothing is uploaded or stored — so it is fast and completely private.</p>`,
+            faqItems: [
+                { question: "Does the character counter count spaces?", answer: "Yes. It shows the count both with and without spaces, so you can match whichever limit a platform uses." },
+                { question: "Is my text uploaded anywhere?", answer: "No. All counting happens in your browser as you type. Your text never leaves your device." },
+                { question: "Is the character counter free?", answer: "Yes, it is completely free with no sign-up or limits." },
+            ],
+        },
+        'symbol-keyboard': {
+            seoContent: `<p>Our <strong>symbol keyboard</strong> puts hundreds of cool symbols and special characters — ★ ♥ ✓ ☆ ⚡ ♛ ✿ ☬ — in one place to copy and paste with a single tap. No need to memorize keyboard shortcuts or alt codes; just browse the categories and tap the symbol you want.</p>
+
+<h3>Symbol categories</h3>
+<ul>
+  <li><strong>Stars & sparkles</strong> — ★ ☆ ✦ ✩ ⋆</li>
+  <li><strong>Hearts & love</strong> — ♥ ♡ ❤ ღ</li>
+  <li><strong>Arrows, checks & lines</strong> — → ✓ ✗ ▬</li>
+  <li><strong>Gaming & decorative</strong> — ☬ ꧁ ꧂ ⚔ ♛ for names and clans</li>
+</ul>
+
+<h3>Where to use these symbols</h3>
+<p>Special symbols are popular for decorating <strong>gaming names</strong> (Free Fire, PUBG, BGMI), dressing up an <strong>Instagram</strong> or <strong>TikTok</strong> bio, and adding flair to <strong>Discord</strong> usernames. They are all standard Unicode, so they show up the same on every device.</p>
+
+<h3>Copy and paste anywhere</h3>
+<p>Tap any symbol to copy it, then paste it into your name, bio, message, or post. No app and no shortcuts — it works on phones and computers alike.</p>`,
+            faqItems: [
+                { question: "How do I copy special symbols?", answer: "Browse the categories in the symbol keyboard and tap any symbol to copy it instantly. Then paste it into your name, bio, or message." },
+                { question: "Do these symbols work in Free Fire and PUBG?", answer: "Yes. The symbols are Unicode characters supported in Free Fire, PUBG Mobile, and BGMI name fields, as well as on social apps." },
+                { question: "Is the symbol keyboard free?", answer: "Yes, it is free with no sign-up. Copy as many symbols as you like." },
+            ],
+        },
+    },
     // ─── INDONESIAN ───
     id: {
         gaming: { seoContent: `<p><strong>Nama gaming keren</strong> adalah hal pertama yang dilihat pemain lain. Baik kamu main <strong>PUBG Mobile</strong>, <strong>Free Fire</strong>, atau <strong>COD Mobile</strong>, nickname kamu menentukan siapa kamu. Generator kami membuat ratusan font unik dengan simbol spesial.</p><h3>Ide Nama Gaming</h3><ul><li><strong>Nama agresif</strong> — Dark Knight, Shadow Assassin, Phantom Reaper</li><li><strong>Tag pro gamer</strong> — Headshot God, Sniper Elite, One Tap King</li></ul>`, faqItems: [{ question: 'Simbol apa yang bisa dipakai di PUBG dan Free Fire?', answer: 'Kebanyakan simbol Unicode seperti ꧁ ꧂ ☬ ★ ⚡ ♛ bisa dipakai di PUBG Mobile dan Free Fire.' }] },

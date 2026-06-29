@@ -33,6 +33,12 @@ export function proxy(request: NextRequest) {
 
         const response = NextResponse.rewrite(url);
         response.headers.set('x-locale', firstSegment);
+        // Keep only English indexed during the AdSense review (and beyond, until non-EN
+        // pages get genuinely localized content). Non-default locale URLs render identical
+        // English copy under an English canonical, so we explicitly noindex them here —
+        // the strong, Google-supported header signal. `follow` preserves link equity.
+        // To re-enable a locale after approval, remove this header (mirrors adopt-me's rollback).
+        response.headers.set('X-Robots-Tag', 'noindex, follow');
         response.cookies.set('locale', firstSegment, { path: '/', maxAge: 60 * 60 * 24 * 365 });
         return response;
     }

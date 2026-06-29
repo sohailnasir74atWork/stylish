@@ -125,12 +125,11 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#8b5cf6" />
-        {/* Preconnect hints — speed up AdSense & fonts */}
+        {/* Google AdSense — site ownership verification + ad serving (pub matches /public/ads.txt) */}
+        <meta name="google-adsense-account" content="ca-pub-3902878504354154" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        {/* Google AdSense Auto Ads */}
-        <meta name="google-adsense-account" content="ca-pub-3701208411582706" />
+        <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://tpc.googlesyndication.com" />
         {/* Hreflang tags are emitted per-page via Metadata API (alternates.languages) */}
         <script
           type="application/ld+json"
@@ -167,10 +166,12 @@ gtag('js', new Date());
 gtag('config', 'G-8CJ604KVBN');`}
         </Script>
 
-        {/* P3: AdSense loaded via next/script with lazyOnload for better LCP */}
+        {/* Google AdSense loader (Auto ads). Publisher matches /public/ads.txt + the
+            google-adsense-account meta tag above so the site can be verified and reviewed. */}
         <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3701208411582706"
-          strategy="lazyOnload"
+          id="adsbygoogle-init"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3902878504354154"
+          strategy="afterInteractive"
           crossOrigin="anonymous"
         />
 

@@ -222,6 +222,17 @@ html.light .prose strong {
   color: #111827;
 }
 
+/* Prose lists, paragraphs, and dividers (covers blog posts + SEO content blocks) */
+.prose p { margin-top: 0.75rem; margin-bottom: 0.75rem; }
+.prose ul, .prose ol { margin: 0.75rem 0; padding-left: 1.5rem; }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li { margin: 0.35rem 0; }
+.prose hr { margin: 2rem 0; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+html.dark .prose ol, html.dark .prose li { color: #9ca3af; }
+html.light .prose ol, html.light .prose li { color: #4b5563; }
+html.light .prose hr { border-top-color: rgba(0, 0, 0, 0.1); }
+
 
 /* =============================================
    LIGHT MODE — OVERRIDES

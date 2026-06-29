@@ -71,14 +71,26 @@ export default function Footer({ locale }: FooterProps) {
                 {/* Legal Chips */}
                 <div className="mb-8">
                     <div className="flex flex-wrap justify-center gap-2">
+                        <Link href={localePath('/blog', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
+                            Blog
+                        </Link>
+                        <Link href={localePath('/news', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
+                            News
+                        </Link>
                         <Link href={localePath('/about', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
                             {t.footerAboutUs}
+                        </Link>
+                        <Link href={localePath('/contact', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
+                            Contact
                         </Link>
                         <Link href={localePath('/privacy-policy', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
                             {t.footerPrivacyPolicy}
                         </Link>
                         <Link href={localePath('/terms', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
                             {t.footerTermsOfService}
+                        </Link>
+                        <Link href={localePath('/disclaimer', locale)} className="px-3 py-1.5 text-xs text-gray-500 bg-white/[0.02] border border-white/[0.04] rounded-full hover:bg-white/[0.06] hover:text-gray-300 transition-all duration-200">
+                            Disclaimer
                         </Link>
                     </div>
                 </div>

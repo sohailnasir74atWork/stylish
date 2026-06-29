@@ -1,0 +1,65 @@
+# Stylish Names
+
+> Stylish Names (stylish-names.com) is a free Unicode stylish name and fancy text generator. Type any name or word and instantly get 1000+ copy-and-paste font styles, symbols, and decorations for gaming profiles, Instagram, TikTok, WhatsApp, Discord, and more. Everything is real Unicode, so it works on any device with no app or sign-up. It also publishes original guides on making stylish names, choosing fonts, and gaming nicknames.
+
+## Core tools
+
+- [Stylish Name Generator](https://stylish-names.com/): Main tool — type a name and browse hundreds of fancy font styles to copy and paste.
+- [Cursive Font Generator](https://stylish-names.com/tool/cursive): Elegant handwriting-style script fonts.
+- [Gothic Font Generator](https://stylish-names.com/tool/gothic): Dark, medieval blackletter text.
+- [Bold Text Generator](https://stylish-names.com/tool/bold): Heavy bold Unicode for bios and posts.
+- [Small Text Generator](https://stylish-names.com/tool/small): Tiny small-caps, superscript, and subscript text.
+- [Aesthetic Font Generator](https://stylish-names.com/tool/aesthetic): Vaporwave full-width and dreamy soft fonts.
+- [Glitch / Zalgo Text Generator](https://stylish-names.com/tool/glitch): Corrupted, cursed glitch text.
+- [Bubble Text Generator](https://stylish-names.com/tool/bubble): Circled and filled bubble letters.
+- [Symbol Keyboard](https://stylish-names.com/tool/symbol-keyboard): Browse and copy decorative and game-safe symbols (꧁ ꧂ ☬ ★ ⚡).
+- [Style Builder](https://stylish-names.com/tool/style-builder): Combine a font with decorative frames and symbols automatically.
+- [Invisible Text Generator](https://stylish-names.com/tool/invisible-text): Blank/invisible Unicode characters.
+
+## Popular name styles
+
+- [Gaming Names](https://stylish-names.com/gaming): Stylish names for PUBG, Free Fire, COD, and more.
+- [Cute Names](https://stylish-names.com/cute): Kawaii names with hearts and flowers.
+- [Cool Names](https://stylish-names.com/cool): Trendy cool fonts and symbols.
+- [Fancy Names](https://stylish-names.com/fancy): Elegant decorative script fonts.
+- [Attitude Names](https://stylish-names.com/attitude): Bold, boss-style attitude names.
+- [Stylish Names for Boys](https://stylish-names.com/boy): Cool and dashing boy names.
+- [Stylish Names for Girls](https://stylish-names.com/girl): Cute, beautiful, aesthetic girl names.
+- [Couple Names](https://stylish-names.com/couple): Romantic matching name pairs.
+
+## Names by platform
+
+- [Instagram](https://stylish-names.com/instagram): Stylish bio and display-name fonts.
+- [TikTok](https://stylish-names.com/tiktok): Trendy TikTok display names.
+- [WhatsApp](https://stylish-names.com/whatsapp): Stylish profile names and status.
+- [Free Fire](https://stylish-names.com/free-fire): FF stylish names and symbols.
+- [PUBG](https://stylish-names.com/pubg): Stylish PUBG nicknames.
+- [BGMI](https://stylish-names.com/bgmi): Stylish BGMI nicknames.
+- [Discord](https://stylish-names.com/discord): Cool Discord usernames.
+- [Roblox](https://stylish-names.com/roblox): Stylish Roblox display names.
+
+## Guides
+
+- [How to Make a Stylish Name (Step-by-Step)](https://stylish-names.com/blog/how-to-make-a-stylish-name)
+- [Best Stylish Fonts for Your Instagram Bio](https://stylish-names.com/blog/best-stylish-fonts-for-instagram-bio)
+- [How to Get a Stylish Name in Free Fire & PUBG](https://stylish-names.com/blog/free-fire-pubg-stylish-name-guide)
+- [What Is Unicode Text and Why Fancy Fonts Work Everywhere](https://stylish-names.com/blog/what-is-unicode-text)
+- [WhatsApp Stylish Names & Status Guide](https://stylish-names.com/blog/whatsapp-stylish-name-and-status-guide)
+- [Cool Symbols & Decorations for Names](https://stylish-names.com/blog/cool-symbols-for-names)
+- [100+ Stylish Name Ideas for Boys and Girls](https://stylish-names.com/blog/stylish-name-ideas-boys-girls)
+- [Aesthetic Username Ideas for TikTok & Discord](https://stylish-names.com/blog/aesthetic-username-ideas-tiktok-discord)
+- [120+ Stylish Free Fire Names (Copy & Paste)](https://stylish-names.com/blog/free-fire-stylish-names-list)
+- [100+ Stylish Names for Girls](https://stylish-names.com/blog/stylish-names-for-girls-list)
+- [100+ Attitude Names for Boys](https://stylish-names.com/blog/attitude-names-for-boys-list)
+
+## About
+
+- [About](https://stylish-names.com/about): What Stylish Names is and how it works.
+- [Contact](https://stylish-names.com/contact): How to reach the team (stylishnamesgen@gmail.com).
+- [Blog index](https://stylish-names.com/blog): All stylish-name and font guides.
+
+## Optional
+
+- [Privacy Policy](https://stylish-names.com/privacy-policy)
+- [Terms of Service](https://stylish-names.com/terms)
+- [Disclaimer](https://stylish-names.com/disclaimer): Independent tool, not affiliated with any platform mentioned.
