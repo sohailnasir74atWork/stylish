@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stylish Names
 
-## Getting Started
+A free Unicode **stylish name / fancy text generator** — turn any name into 1000+ copy-and-paste
+font styles, symbols, and decorations for gaming profiles, Instagram, TikTok, WhatsApp, and more.
 
-First, run the development server:
+Live site: **https://stylish-names.com**
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- TypeScript
+
+## Getting started
+
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev     # start the dev server
+npm run build   # production build
+npm run start   # serve the production build
+npm run lint    # run eslint
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app` — App Router pages (home, `[category]`, `tool/*`, `blog`, `news`, legal pages, sitemap, robots)
+- `src/components` — UI components (generator, grids, header/footer, SEO content)
+- `src/lib` — content model (`categories.ts`, `tools.ts`, `preBuiltNames.ts`), the Unicode engine, i18n, and `content/blogPosts.ts`
+- `public` — static assets, `ads.txt`, icons, manifest
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- See [`SEO_GROWTH_PLAN.md`](./SEO_GROWTH_PLAN.md) for the AdSense-readiness work and the post-approval SEO roadmap.
+- Only English is indexed; non-English locale URLs are served but `noindex`ed via `src/proxy.ts`.
+# stylish
